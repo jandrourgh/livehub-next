@@ -1,0 +1,81 @@
+{
+    "users": [
+        {
+            "id": 0,
+            "email": "admin@livehub.com",
+            "password": "admin",
+            "firstName": "Alejandro",
+            "lastName": "Diaz",
+            "userName": "admin",
+            "role": "admin"
+        }, 
+        {
+            "id": 1,
+            "email": "user1@mail.com",
+            "password": "user1",
+            "firstName": "User",
+            "lastName": "Uno",
+            "userName": "userUno",
+            "role": "user"
+        },
+        {
+            "id": 2,
+            "email": "user2@livehub.com",
+            "password": "user2",
+            "firstName": "User",
+            "lastName": "Dos",
+            "userName": "userDos",
+            "role": "employee",
+            "worksAt": 0
+        }
+    ],
+    "bands": [
+        {
+            "id": 0,
+            "userId": 0,
+            "name": "AEDNAUM",
+            "genres": ["shoegaze", "doom", "experimental", "black metal"],
+            "isLive": false,
+            "theme": {
+                "primary": "#000",
+                "secondary": "#FFF"
+            }
+        }, 
+        {
+            "id": 1,
+            "userId": 0,
+            "name": "Ultrasaurus",
+            "genres": ["doom"],
+            "isLive": false,
+            "theme": {
+                "primary": "#FFF",
+                "secondary": "#000"
+            }
+        }
+    ],
+    "rooms": [
+        {
+            "id": 0,
+            "equipment": ["ENGL Powerball", "Yamaha drumkit"],
+            "address": "C/ Lepanto 19 Benidorm"
+        }
+    ], 
+    "bookings": [
+        {
+            "bandId": 0,
+            "roomId": 0,
+            "dateFrom": 1653042321,
+            "dateTo": 1653060321,
+            "incidences":{
+                "messages": [{
+                    "from": "customer",
+                    "body": "wifi wasn't working :("
+                },{
+                    "from": "employee",
+                    "body": "reset your router"
+                }],
+                "solved": true
+            }
+        }
+    ]
+}
