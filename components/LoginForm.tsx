@@ -1,5 +1,4 @@
-import { FormApi, } from "final-form";
-import React, { ComponentElement, useState } from "react";
+import React from "react";
 import { Form, Field, FormSpy } from 'react-final-form'
 
 const Condition = ({ when, is, children }: { when: string, is: string, children: React.ReactNode }) => (

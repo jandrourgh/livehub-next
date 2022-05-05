@@ -31,7 +31,7 @@
     ],
     "bands": [
         {
-            "id": 0,
+            "id": "aednaum",
             "userId": 0,
             "name": "AEDNAUM",
             "genres": ["shoegaze", "doom", "experimental", "black metal"],
@@ -42,7 +42,7 @@
             }
         }, 
         {
-            "id": 1,
+            "id": "ultrasaurus",
             "userId": 0,
             "name": "Ultrasaurus",
             "genres": ["doom"],

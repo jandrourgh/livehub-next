@@ -1,12 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../../styles/Home.module.css'
 import PageLayout from '../../components/PageLayout'
+import BandItem from '../../components/BandItem'
+import { IBand } from "../../interfaces/Band";
 
-const Bands: NextPage = () => {
-  const [bands, setBands] = useState([]);
+interface BandsPageProps {
+  bands: IBand[]
+}
+
+const Bands: NextPage<BandsPageProps> = (props) => {
+  const {bands} = props
   return (
     <div className={styles.container}>
       <Head>
@@ -15,9 +20,20 @@ const Bands: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <PageLayout>
-
+        <section>
+          {bands.length?bands.map((band, i)=>
+            <BandItem key={i} band={band}></BandItem>
+          ):"no hay bandas"}
+        </section>
       </PageLayout>
     </div>
     )
 };
+export async function getStaticProps() {
+  const res = await fetch(`http://localhost:3001/bands`)
+  const bands : IBand[] = await res.json()
+
+  return { props: {bands}}
+}
+
 export default Bands;
