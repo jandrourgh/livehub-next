@@ -48,7 +48,7 @@ const LoginForm = () => {
                 <pre>
                     {JSON.stringify(values)}
                 </pre>
-                    <div className="form-check">
+                    <div >
                         <label className="form-check-label" htmlFor="login">Login</label>
                         <Field
                             name="login"
@@ -56,11 +56,10 @@ const LoginForm = () => {
                             type="radio"
                             value="login"
                             className="form-check-input"
-                            id="login"
-                            >
+                            id="login">
                         </Field>
                     </div>
-                    <div className="form-check">
+                    <div >
                         <label className="form-check-label" htmlFor="register">Register</label>
                         <Field
                             name="login"
@@ -69,9 +68,80 @@ const LoginForm = () => {
                             value="register"
                             className="form-check-input"
                             id="register">
+                        </Field>
+                    </div>
+                    <div>
+                        <label>e-mail</label>
+                        <Field name="email"
+                            validate={required}
+                            formatOnBlur
+                            component="input"
+                            type="email"
+                            >
 
                         </Field>
                     </div>
+                    <Condition when="login" is="register">
+                        <div>
+                            <label>Username</label>
+                            <Field name="username" 
+                                validate={required}
+                                formatOnBlur
+                                component="input"
+                                type="text">
+                            </Field>
+                        </div>
+                        <div>
+                            <label>First Name</label>
+                            <Field 
+                                name="first-name" 
+                                validate={required} 
+                                formatOnBlur 
+                                component="input" 
+                                type="text">
+                            </Field>
+                        </div>
+                        <div>
+                            <label>Last Name</label>
+                            <Field 
+                                name="last-name" 
+                                validate={required} 
+                                formatOnBlur 
+                                component="input" 
+                                type="text">
+                            </Field>
+                        </div>
+                    </Condition>
+                    <div>
+                        <label>Password</label>
+                        <Field name="password"
+                            validate={required}
+                            formatOnBlur
+                            component={"input"} 
+                            type={"password"}>
+                        </Field>
+                    </div>
+                    <Condition when="login" is="register">
+                        <FormSpy>
+                            {props=>
+                            <>
+                                <div>
+                                    <label>Repeat password</label>
+                                    <Field name="repassword"
+                                        validate={passwordMatch(props.values.password)}
+                                        formatOnBlur
+                                        component={"input"}
+                                        type={"password"}>
+                                    </Field>
+                                </div>
+                            </>
+                            }
+                        </FormSpy>
+                    </Condition>
+                    {/** 
+                    
+                    
+                    
                     <Field 
                         name="username" 
                         //validate={composeValidators(required, usernameAvailable)}
@@ -156,6 +226,7 @@ const LoginForm = () => {
                             }
                         </FormSpy>
                     </Condition>
+                     */ }
 
                     <button type="submit" className="btn btn-dark mt-4">Submit</button>
                 </form>
