@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import styles from '../../styles/Home.module.css'
-import PageLayout from '../../components/PageLayout'
-import BandItem from '../../components/BandItem'
-import { IBand } from "../../interfaces/Band";
+import styles from 'styles/Home.module.css'
+import PageLayout from 'components/PageLayout'
+import BandItem from 'components/BandItem'
+import { IBand } from "interfaces/Band";
 
 interface BandsPageProps {
   bands: IBand[]

@@ -22,12 +22,29 @@ const LoginForm = () => {
         (value: string|undefined )=> 
         value!==password?'is-invalid':""
 
-    const handleSubmit = (data: any) => {
+    const handleSubmit = async (data: any) => {
         console.log(data)
         switch (data.login) {
             case "login":
+                
+                fetch("api/users/login", {
+                    method:"POST",
+                    body: JSON.stringify({email: data.email, password: data.password})
+                })
+                .catch((data)=>{
+                    
+                })
+                .then((data)=>{
+                    console.log(data)
+                })
                 break;
             case "register":
+                fetch("api/users/register", {
+                    method: "POST",
+                    body: JSON.stringify({
+                        data
+                    })
+                })
                 break;
         }
     }
@@ -138,95 +155,6 @@ const LoginForm = () => {
                             }
                         </FormSpy>
                     </Condition>
-                    {/** 
-                    
-                    
-                    
-                    <Field 
-                        name="username" 
-                        //validate={composeValidators(required, usernameAvailable)}
-                        validate={required}
-                        formatOnBlur
-                        >
-                        {({ input, meta }) => (
-                            <div className="form-group">
-                                <label htmlFor="user">User</label>
-                                <input {...input} className={`form-control ${meta.error?meta.error:""}`} name="user" type="text"  />
-                                <div className={`invalid-feedback `}>
-                                    Error
-                                </div>
-                                <div className="valid-feedback">
-                                    Username available
-                                </div>
-                            </div>
-                        )}
-
-                    </Field>
-                    <Condition when="login" is="register">
-                        <Field name="firstname" validate={required}>
-                            {({ input, meta }) => (
-                                <div className="form-group">
-                                    <label htmlFor="firstname">First Name</label>
-                                    <input {...input} className={`form-control  ${meta.error!=undefined?meta.error:""}`} name="user" type="text" />
-                                    <div className={`invalid-feedback`}>
-                                        You must provide a name
-                                    </div>
-                                    <div className={`valid-feedback `}>
-                                        Username available
-                                    </div>
-                                </div>
-                            )}
-
-                        </Field>
-                        <Field name="lastname">
-                            {({ input, meta }) => (
-                                <div className="form-group">
-                                    <label htmlFor="lastname">Last Name</label>
-                                    <input {...input} className={`form-control `} name="user" type="text" />
-                                    <div className="invalid-feedback">
-                                        {meta.error}
-                                    </div>
-                                </div>
-                            )}
-
-                        </Field>
-                    </Condition>
-                    <label htmlFor="password">Password</label>
-                    <Field name="password">
-                        {({ input, meta }) => (
-                            <div className="form-group mt-2">
-                                <input type="password" {...input} className={`form-control`} />
-
-                                <div className="invalid-feedback">
-                                    Please provide a password
-                                </div>
-                            </div>
-                        )}
-
-                    </Field>
-
-                    <Condition when="login" is="register">
-                        <label htmlFor="repassword">Repeat password</label>
-                        <FormSpy >
-                            {
-                                props=>(
-                                    <Field name="repassword" validate={passwordMatch(props.values.password)}>
-                                        {({ input, meta }) => (
-                                            <div className="form-group mt-2">
-                                                <input type="password" {...input} className={`form-control ${meta.error!==undefined?meta.error:""}`} />
-
-                                                <div className="invalid-feedback">
-                                                    Password doesnt match!
-                                                </div>
-                                            </div>
-                                        )}
-
-                                    </Field>
-                                )
-                            }
-                        </FormSpy>
-                    </Condition>
-                     */ }
 
                     <button type="submit" className="btn btn-dark mt-4">Submit</button>
                 </form>
