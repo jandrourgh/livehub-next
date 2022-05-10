@@ -22,27 +22,30 @@ const LoginForm = () => {
         (value: string|undefined )=> 
         value!==password?'is-invalid':""
 
-    const handleSubmit = async (data: any) => {
-        console.log(data)
-        switch (data.login) {
-            case "login":
-                
-                fetch("api/users/login", {
+    const handleSubmit = async (formData: any) => {
+        console.log(formData)
+        switch (formData.login) {
+            case "login":        
+                const response = await fetch("api/users/login", {
                     method:"POST",
-                    body: JSON.stringify({email: data.email, password: data.password})
+                    body: JSON.stringify({email: formData.email, password: formData.password})
                 })
-                .catch((data)=>{
-                    
-                })
-                .then((data)=>{
-                    console.log(data)
-                })
-                break;
+                console.log(response)
+                switch(response.status){
+                    case 200:
+                        const data = await response.json()
+                        console.log(data)
+                        localStorage.setItem("user", JSON.stringify(data))
+                        break;
+                    case 401:
+                        console.log("unauthorized")
+                        break
+                }
             case "register":
                 fetch("api/users/register", {
                     method: "POST",
                     body: JSON.stringify({
-                        data
+                        formData
                     })
                 })
                 break;
