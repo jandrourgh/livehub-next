@@ -12,10 +12,25 @@ export interface IUserLogin {
     userName?: string,
     password: string
 }
+export interface IUserRegister {
+    email: string,
+    userName: string,
+    firstName: string,
+    lastName: string,
+    password: string
+}
 export interface IUserAuthResponse {
     id: number,
     userName: string,
     firstName: string,
     lastName: string,
     token: string,
+}
+export interface IUserSave {
+    userName: string,
+    firstName: string,
+    lastName: string,
+    email: string,
+    password:string,
+    role: "user"
 }

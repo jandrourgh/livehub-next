@@ -1,3 +1,5 @@
+import { storeToken } from "helpers/auth/storeToken";
+import { IUserRegister } from "interfaces/User";
 import React from "react";
 import { Form, Field, FormSpy } from 'react-final-form'
 
@@ -7,7 +9,11 @@ const Condition = ({ when, is, children }: { when: string, is: string, children:
     </Field>
 )
 
-const LoginForm = () => {
+interface ILoginFormProps {
+    loginCallback: ()=>void
+}
+
+const LoginForm = ({loginCallback}: ILoginFormProps) => {
 
     const composeValidators = (...validators: any[]) => (value: any) =>
   validators.reduce((error, validator) => error || validator(value), undefined)
@@ -26,29 +32,52 @@ const LoginForm = () => {
         console.log(formData)
         switch (formData.login) {
             case "login":        
-                const response = await fetch("api/users/login", {
+                const loginResponse = await fetch("api/users/login", {
                     method:"POST",
                     body: JSON.stringify({email: formData.email, password: formData.password})
                 })
-                console.log(response)
-                switch(response.status){
+                switch(loginResponse.status){
                     case 200:
-                        const data = await response.json()
-                        console.log(data)
-                        localStorage.setItem("user", JSON.stringify(data))
+                        const data = await loginResponse.json()
+                        storeToken(data)
+                        loginCallback()
                         break;
                     case 401:
                         console.log("unauthorized")
                         break
                 }
-            case "register":
-                fetch("api/users/register", {
-                    method: "POST",
-                    body: JSON.stringify({
-                        formData
-                    })
-                })
                 break;
+            case "register":
+                const newUser: IUserRegister = {
+                    email: formData.email,
+                    firstName: formData["first-name"],
+                    lastName: formData["last-name"],
+                    password: formData.password,
+                    userName: formData.username
+                }
+                const registerResponse = await fetch("api/users/register", {
+                    method: "POST",
+                    body: JSON.stringify(newUser),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                console.log(registerResponse)
+                switch(registerResponse.status){
+                    case 200:
+                        const data = await registerResponse.json()
+                        storeToken(data)
+                        loginCallback()
+                        break;
+                    case 401:
+                        break;
+                    default:
+                        break;
+                }
+
+                break;
+            default: 
+                console.log("queeee")
         }
     }
 

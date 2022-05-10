@@ -5,6 +5,11 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import PageLayout from "components/PageLayout";
 const Auth = () => {
+
+  const loginCallback = () => {
+    console.log("is logged in")
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -13,7 +18,7 @@ const Auth = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <PageLayout>
-          <LoginForm></LoginForm>
+          <LoginForm loginCallback={loginCallback}></LoginForm>
       </PageLayout>
     </div>
   );
