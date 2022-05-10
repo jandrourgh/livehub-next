@@ -1,6 +1,7 @@
 import { IBand } from "interfaces/Band";
 import { NextApiRequest, NextApiResponse } from "next"
-import { verify } from 'jsonwebtoken'
+import { Jwt, JwtPayload, verify} from 'jsonwebtoken'
+import { IToken } from "interfaces/Token";
 interface SingleUserResponse {
     bands: IBand[],
     role: string
@@ -18,8 +19,15 @@ export default async function handler(
     res: NextApiResponse<TestResponse>
   ) {
       const { id } = req.query
-      console.log(id)
-      console.log(req.headers.authorization)
-    res.status(200).json({a: 1})
+      if(req.headers.authorization){
+          const token = req.headers.authorization?.split(" ")[1]
+          const verifiedToken: any= verify(token, "AAAAEEEEIIIIOOOOUUUU")
+          console.log(verifiedToken)
+          
+          res.status(200).json({a: 1})
+      } else {
+          res.status(401).end()
+    } 
+
   }
   
