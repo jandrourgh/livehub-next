@@ -52,9 +52,7 @@ export async function getStaticPaths(){
 export async function getStaticProps({params}: ISingleBandParams ){
     
     const res = await fetch(`http://localhost:3001/bands/${params.id}`)
-    const band : IBand = await res.json()
-    console.log("bandddd", params)
-  
+    const band : IBand = await res.json()  
     return { props: {band}}
 }
 export default Band

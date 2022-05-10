@@ -29,67 +29,13 @@
       "worksAt": 0
     },
     {
-      "email": "afdafsa@livehub.com",
-      "firstName": "fa",
-      "lastName": "asda",
+      "email": "AAA@livehub.com",
+      "firstName": "afda",
+      "lastName": "fdafdsa",
       "password": "admin",
       "role": "user",
-      "userName": "sdasda",
+      "userName": "fdafd",
       "id": 3
-    },
-    {
-      "email": "afdafsa@livehub.com",
-      "firstName": "fa",
-      "lastName": "asda",
-      "password": "admin",
-      "role": "user",
-      "userName": "sdasda",
-      "id": 4
-    },
-    {
-      "email": "afdafsa@livehub.com",
-      "firstName": "fa",
-      "lastName": "asda",
-      "password": "admin",
-      "role": "user",
-      "userName": "sdasda",
-      "id": 5
-    },
-    {
-      "email": "admin@livehub.com",
-      "firstName": "fa",
-      "lastName": "asda",
-      "password": "admin",
-      "role": "user",
-      "userName": "sdasda",
-      "id": 6
-    },
-    {
-      "email": "admin@livehub.com",
-      "firstName": "fa",
-      "lastName": "asda",
-      "password": "admin",
-      "role": "user",
-      "userName": "sdasda",
-      "id": 7
-    },
-    {
-      "email": "admin@livehub.com",
-      "firstName": "fa",
-      "lastName": "asda",
-      "password": "admin",
-      "role": "user",
-      "userName": "sdasda",
-      "id": 8
-    },
-    {
-      "email": "admin@livehub.com",
-      "firstName": "fa",
-      "lastName": "asda",
-      "password": "admin",
-      "role": "user",
-      "userName": "sdasda",
-      "id": 9
     }
   ],
   "bands": [

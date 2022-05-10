@@ -1,5 +1,5 @@
 import { storeToken } from "helpers/auth/storeToken";
-import { IUserRegister } from "interfaces/User";
+import { IUserAuthResponse, IUserLogin, IUserRegister } from "interfaces/User";
 import React from "react";
 import { Form, Field, FormSpy } from 'react-final-form'
 
@@ -10,7 +10,7 @@ const Condition = ({ when, is, children }: { when: string, is: string, children:
 )
 
 interface ILoginFormProps {
-    loginCallback: ()=>void
+    loginCallback: (data: IUserAuthResponse)=>void
 }
 
 const LoginForm = ({loginCallback}: ILoginFormProps) => {
@@ -38,9 +38,9 @@ const LoginForm = ({loginCallback}: ILoginFormProps) => {
                 })
                 switch(loginResponse.status){
                     case 200:
-                        const data = await loginResponse.json()
+                        const data: IUserAuthResponse = await loginResponse.json()
                         storeToken(data)
-                        loginCallback()
+                        loginCallback(data)
                         break;
                     case 401:
                         console.log("unauthorized")
@@ -65,9 +65,9 @@ const LoginForm = ({loginCallback}: ILoginFormProps) => {
                 console.log(registerResponse)
                 switch(registerResponse.status){
                     case 200:
-                        const data = await registerResponse.json()
+                        const data: IUserAuthResponse = await registerResponse.json()
                         storeToken(data)
-                        loginCallback()
+                        loginCallback(data)
                         break;
                     case 401:
                         break;
@@ -94,9 +94,9 @@ const LoginForm = ({loginCallback}: ILoginFormProps) => {
             //debug={(state, fieldState) => console.log(state, fieldState)}
             render={({ handleSubmit, values  }) => (
                 <form onSubmit={handleSubmit}>
-                <pre>
+                {/* <pre>
                     {JSON.stringify(values)}
-                </pre>
+                </pre> */}
                     <div >
                         <label className="form-check-label" htmlFor="login">Login</label>
                         <Field
