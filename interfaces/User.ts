@@ -5,7 +5,7 @@ export interface IUser {
     firstName: string,
     lastName: string,
     userName: string,
-    role: string
+    role: "user" | "employee" | "admin"
 }
 export interface IUserLogin {
     email?: string,
@@ -33,4 +33,11 @@ export interface IUserSave {
     email: string,
     password:string,
     role: "user"
+}
+export interface IUserProfile{
+    id: number,
+    userName: string,
+    firstName: string,
+    lastName: string,
+    email: string,
 }

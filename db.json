@@ -67,6 +67,19 @@
         "primary": "#FFF",
         "secondary": "#000"
       }
+    },
+    {
+      "id": "vacuamirada",
+      "userId": 1,
+      "name": "Vacua Mirada",
+      "genres": [
+        "post-punk"
+      ],
+      "isLive": false,
+      "theme": {
+        "primary": "#FFF",
+        "secondary": "#000"
+      }
     }
   ],
   "rooms": [
