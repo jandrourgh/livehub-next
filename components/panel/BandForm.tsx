@@ -3,15 +3,23 @@ import { Form, Field, FormSpy } from 'react-final-form'
 import { HexColorPicker } from "react-colorful";
 import ThemePreview from "./ThemePreview";
 import HexColorPickerAdapter from "./HexColorPickerAdapter";
-
+import Image from 'next/image'
+import FileField from "./FileField";
+import {getFormData} from "helpers/forms/ObjectToFormData"
 
 interface BandFormProps {
     band: IBand | null
 }
 
 const BandForm = ({band}: BandFormProps)=>{
-    const onSubmit = () =>{
-
+    const onSubmit = async (values: any) =>{
+        console.log(values)
+        const dataSend = getFormData(values)
+        const response = await fetch("api/bands/save", {
+            body: dataSend,
+            method: "POST",
+        })
+        console.log(response)
     }
     const validate = () => {
 
@@ -37,6 +45,13 @@ const BandForm = ({band}: BandFormProps)=>{
                         <div>
                             <label htmlFor="description">Band description</label>
                             <Field name="description" id="description" component="textarea"></Field>
+                        </div>
+                        <div>
+                            <label htmlFor="image">Upload image</label>
+                            <FileField id="image" hidden name="image"></FileField>
+                        </div>
+                        <div>
+                            {/* <Image alt="" src=""></Image> */}
                         </div>
                     </div>
                     <div>
@@ -81,6 +96,9 @@ const BandForm = ({band}: BandFormProps)=>{
                             rounded: values.rounded,
                             opacity: values.opacity    
                         }}></ThemePreview>
+                    </div>
+                    <div>
+                        <button type="submit">Submit</button>
                     </div>
                 </form>
             )} 
