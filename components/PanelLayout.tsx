@@ -1,17 +1,19 @@
-import { PanelData } from "interfaces/Panel"
+import { IPanelData } from "interfaces/Panel"
+import { useEffect } from "react"
+import BandsProfilePanel from "./panel/BandsProfilePanel"
 
-const PanelLayout = ({bands, userData}: PanelData) => {
-    console.log(bands, userData)
+interface IPanelDataProps {
+    panelData: IPanelData
+}
+
+const PanelLayout = ({panelData}: IPanelDataProps) => {
+    useEffect(()=>{
+        console.log(panelData)
+    },[panelData])
     return (
         <>
             PANEL LAYOUT
-            {bands.map((band, i)=>{
-                return <ul key={i}>
-                    <li>{band.id}</li>
-                    <li>{band.name}</li>
-                    <li>{band.userId}</li>
-                </ul>
-            })}
+            {panelData.bands?<BandsProfilePanel bands={panelData.bands}/>: <></>}
         </>
     )
 }
