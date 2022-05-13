@@ -6,7 +6,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const FileField = ({ name, ...props }: Props) => (
-  <Field<FileList> name={name}>
+  <Field<File> name={name}>
     {({ input: { value, onChange, ...input } }) => (
       <input
         {...input}

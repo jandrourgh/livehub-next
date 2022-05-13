@@ -3,17 +3,18 @@ import { useEffect } from "react"
 import BandsProfilePanel from "./panel/BandsProfilePanel"
 
 interface IPanelDataProps {
-    panelData: IPanelData
+    panelData: IPanelData,
+    token: string
 }
 
-const PanelLayout = ({panelData}: IPanelDataProps) => {
+const PanelLayout = ({panelData, token}: IPanelDataProps) => {
     useEffect(()=>{
         console.log(panelData)
     },[panelData])
     return (
         <>
             PANEL LAYOUT
-            {panelData.bands?<BandsProfilePanel bands={panelData.bands}/>: <></>}
+            {panelData.bands?<BandsProfilePanel token={token} bands={panelData.bands}/>: <></>}
         </>
     )
 }

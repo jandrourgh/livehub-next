@@ -47,10 +47,6 @@ const BandForm = ({band}: BandFormProps)=>{
                             <Field name="description" id="description" component="textarea"></Field>
                         </div>
                         <div>
-                            <label htmlFor="image">Upload image</label>
-                            <FileField id="image" hidden name="image"></FileField>
-                        </div>
-                        <div>
                             {/* <Image alt="" src=""></Image> */}
                         </div>
                     </div>

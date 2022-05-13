@@ -1,11 +1,13 @@
 import { IBand } from "interfaces/Band"
 import { useEffect, useState } from "react"
 import BandForm from "./BandForm"
+import PictureForm from "./PictureForm"
 
 interface IBandsProfilePanelProps {
     bands: IBand[]
+    token: string
 }
-const BandsProfilePanel = ({bands}: IBandsProfilePanelProps) => {
+const BandsProfilePanel = ({bands, token}: IBandsProfilePanelProps) => {
     const [selectedBand, setSelectedBand] = useState<null | IBand>(null)
 
     
@@ -29,7 +31,7 @@ const BandsProfilePanel = ({bands}: IBandsProfilePanelProps) => {
                     </article>
                 )}
                 <BandForm band={selectedBand}/>
-                    
+                <PictureForm band={selectedBand} token={token}/>
             </>
 
         }

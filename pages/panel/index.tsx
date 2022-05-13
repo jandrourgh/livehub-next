@@ -13,6 +13,7 @@ import PanelLayout from "components/PanelLayout";
 
 const Panels: NextPage = () => {
     const [panelData, setPanelData] = useState<null | IPanelData>(null)
+    const [token, setToken] = useState<null | string>(null)
     const [auth, setAuth] = useState(false)
     //const [userId, setUserId] = useState(id)
     const router = useRouter()
@@ -34,6 +35,7 @@ const Panels: NextPage = () => {
             data.json().then(panelDataResponse=>{
               setPanelData(panelDataResponse)
               setAuth(true)
+              setToken(localStorageData.token)
             }).catch(()=>{
                 router.push("/login")
             })
@@ -47,8 +49,8 @@ const Panels: NextPage = () => {
     }, [router]);
     return (
         <PageLayout >
-        {panelData===null ? "Loading" :
-          <PanelLayout panelData={panelData}/>}
+        {panelData===null || token===null ? "Loading" :
+          <PanelLayout panelData={panelData} token={token}/>}
         </PageLayout>
 
     )

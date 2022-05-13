@@ -1,19 +1,23 @@
 import nextConnect from "next-connect";
 import multer from 'multer';
 import { NextApiRequest, NextApiResponse } from "next";
+import {isMyBandMiddleware} from "helpers/api/isMyBandMiddleware"
 
-interface NextApiRequestWithFiles extends NextApiRequest {
-  files: FileList
+interface NextApiRequestWithFile extends NextApiRequest {
+  file: File
 }
 
 const upload = multer({
+    fileFilter: (req, file, cb) => {
+      
+    },
     storage: multer.diskStorage({
       destination: './public/uploads',
       filename: (req, file, cb) => cb(null, file.originalname),
     }),
   });
 
-  const apiRoute = nextConnect<NextApiRequestWithFiles, NextApiResponse>({
+  const apiRoute = nextConnect<NextApiRequestWithFile, NextApiResponse>({
     onError(error, req, res) {
         console.log(error.message, req.body)
 
@@ -22,13 +26,13 @@ const upload = multer({
     onNoMatch(req, res) {
       res.status(405).json({ error: `Method '${req.method}' Not Allowed` });
     },
+    
   });
   
-  apiRoute.use(upload.array('image[0]'));
+  apiRoute.use(isMyBandMiddleware).use(upload.single('image'));
   
   apiRoute.post((req, res) => {
-    console.log(req.body)
-    console.log(req.files)
+    console.log(req)
     res.status(200).json({ data: 'success' });
   });
   

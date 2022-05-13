@@ -7,3 +7,11 @@ export interface IBand{
     isLive: boolean,
     theme: ITheme
 }
+
+export interface IBandUpload{
+    userId: number,
+    name: string,
+    genres: string[],
+    theme: ITheme
+    image: File
+}
