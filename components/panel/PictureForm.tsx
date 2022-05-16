@@ -4,7 +4,8 @@ import { Form } from "react-final-form";
 
 interface IPictureFormProps {
   band: IBand | null;
-  token: string
+  token: string,
+  editing: boolean
 }
 
 const PictureForm = ({ band, token }: IPictureFormProps) => {

@@ -1,41 +1,45 @@
-import nextConnect from "next-connect";
-import multer from 'multer';
-import { NextApiRequest, NextApiResponse } from "next";
+import { getToken } from 'helpers/api/getToken'
+import { IUser, IUserAuthResponse, IUserRegister, IUserSave } from 'interfaces/User'
+import type { NextApiRequest, NextApiResponse } from 'next'
+import { getUidFromRequest } from 'helpers/auth/getUidFromRequest'
+import { IBand, IBandUpload } from 'interfaces/Band'
+import { ITheme } from 'interfaces/Theme'
 
-interface NextApiRequestWithFiles extends NextApiRequest {
-  files: FileList
+interface ISaveFormResponse{
+    message: string
 }
 
-const upload = multer({
-    storage: multer.diskStorage({
-      destination: './public/uploads',
-      filename: (req, file, cb) => cb(null, file.originalname),
-    }),
-  });
 
-  const apiRoute = nextConnect<NextApiRequestWithFiles, NextApiResponse>({
-    onError(error, req, res) {
-        console.log(error.message, req.body)
-
-      res.status(501).json({ error: `Sorry something Happened! ${error.message}` });
-    },
-    onNoMatch(req, res) {
-      res.status(405).json({ error: `Method '${req.method}' Not Allowed` });
-    },
-  });
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<ISaveFormResponse>
+) {
+    console.log("handler de save band")
+    const uid = getUidFromRequest(req)
+    const band = JSON.parse(req.body) as IBandUpload
+    console.log(band)
   
-  apiRoute.use(upload.array('image[0]'));
-  
-  apiRoute.post((req, res) => {
-    console.log(req.body)
-    console.log(req.files)
-    res.status(200).json({ data: 'success' });
-  });
-  
-  export default apiRoute;
-  
-  export const config = {
-    api: {
-      bodyParser: false, // Disallow body parsing, consume as stream
-    },
-  };
+    const bandToUpload: Partial<IBand> = {
+        id: band.id?band.id:band.name.toLocaleLowerCase().replaceAll(" ", ""),
+        description: band.description,
+        genres: band.genres?.split(", "),
+        name: band.name,
+        theme: {
+            backdrop: band.backdrop,
+            borders: band.borders,
+            opacity: band.opacity,
+            primary: band.primary,
+            secondary: band.secondary,
+            rounded: band.round
+        },
+        userId: uid
+    }
+    const responseSaveBand = await fetch(`http://localhost:3001/bands/${band.id?band.id:""}`, {
+        method: band.id?"PUT":"POST",
+        headers: {"Content-type": "application/json"},
+        body: JSON.stringify(bandToUpload)
+        
+    })
+    //console.log(responseSaveBand)
+    res.status(200).json({message: "OKK"})
+}

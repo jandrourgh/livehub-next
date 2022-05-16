@@ -9,9 +9,11 @@ interface IBandsProfilePanelProps {
 }
 const BandsProfilePanel = ({bands, token}: IBandsProfilePanelProps) => {
     const [selectedBand, setSelectedBand] = useState<null | IBand>(null)
+    const [editing, setEditing] = useState(false)
 
     const handleEditBandClick = useCallback((band: IBand)=>{
         setSelectedBand(band)
+        setEditing(true)
     }, [])
 
     useEffect(()=>{
@@ -32,8 +34,8 @@ const BandsProfilePanel = ({bands, token}: IBandsProfilePanelProps) => {
                         <div><button onClick={()=>{handleEditBandClick(band)}}>Edit</button></div>
                     </article>
                 )}
-                <BandForm band={selectedBand}/>
-                <PictureForm band={selectedBand} token={token}/>
+                <BandForm band={selectedBand} token={token} editing={editing}/>
+                <PictureForm band={selectedBand} token={token} editing={editing}/>
             </>
 
         }

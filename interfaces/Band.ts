@@ -5,13 +5,19 @@ export interface IBand{
     name: string,
     genres: string[],
     isLive: boolean,
+    description: string,
     theme: ITheme
 }
 
 export interface IBandUpload{
-    userId: number,
     name: string,
-    genres: string[],
-    theme: ITheme
-    image: File
+    genres: string,
+    description: string,
+    primary: string,
+    secondary: string,
+    borders: boolean,
+    backdrop: boolean,
+    opacity: number,
+    round: boolean,
+    id: string
 }

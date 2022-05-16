@@ -49,6 +49,7 @@
         "experimental",
         "black metal"
       ],
+      "description": "Cras ultrices quam vitae ante cursus molestie. Donec non ullamcorper lacus, congue bibendum elit. Sed quis feugiat diam. Etiam non aliquet felis. Curabitur in eros vitae nunc condimentum lobortis consectetur id arcu. Fusce molestie sollicitudin nisl, vitae fermentum dui lobortis id. Ut vitae ante sed arcu molestie fermentum dictum non arcu. Morbi euismod sagittis imperdiet. Vestibulum eu mauris et dolor porttitor varius.",
       "isLive": false,
       "theme": {
         "primary": "#000",
@@ -59,6 +60,7 @@
       "id": "ultrasaurus",
       "userId": 0,
       "name": "Ultrasaurus",
+      "description": "Sed nec odio et libero imperdiet aliquet. Nam vel dignissim nibh. Maecenas tempus pretium enim, et efficitur diam porttitor quis. Donec in mauris iaculis, malesuada enim eu, rhoncus turpis. Cras sagittis urna ac pellentesque commodo. Proin dictum eleifend faucibus. Maecenas condimentum ut lorem eget dictum. Aenean volutpat felis nibh, et commodo turpis interdum in.",
       "genres": [
         "doom"
       ],
@@ -70,16 +72,76 @@
     },
     {
       "id": "vacuamirada",
-      "userId": 1,
-      "name": "Vacua Mirada",
+      "description": "afdsafafdsafd ds fda fringilla. Suspendisse potenti. Nam maximus ipsum odio, vitae ultricies massa elementum ac. Donec ultrices faucibus luctus. Morbi gravida mauris vitae consequat dapibus. Proin sed erat augue. Nullam aliquet euismod vestibulum. Quisque vitae viverra massa, ut vulputate odio. Cras vel nibh vitae ligula feugiat efficitur. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas et odio nec quam scelerisque semper. Pellentesque nulla velit, aliquet sed auctor et, finibus vitae sem. Etiam dolor quam, finibus sit amet mi ac, placerat vulputate nisi. Quisque iaculis mi at fringilla feugiat. Quisque neque sapien, sodales vel lacus et, facilisis congue ipsum.",
       "genres": [
-        "post-punk"
+        "afdsafafdsafd ds fda fringilla. Suspendisse potenti. Nam maximus ipsum odio",
+        "vitae ultricies massa elementum ac. Donec ultrices faucibus luctus. Morbi gravida mauris vitae consequat dapibus. Proin sed erat augue. Nullam aliquet euismod vestibulum. Quisque vitae viverra massa",
+        "ut vulputate odio. Cras vel nibh vitae ligula feugiat efficitur. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas et odio nec quam scelerisque semper. Pellentesque nulla velit",
+        "aliquet sed auctor et",
+        "finibus vitae sem. Etiam dolor quam",
+        "finibus sit amet mi ac",
+        "placerat vulputate nisi. Quisque iaculis mi at fringilla feugiat. Quisque neque sapien",
+        "sodales vel lacus et",
+        "facilisis congue ipsum."
       ],
-      "isLive": false,
+      "name": "HOLA",
       "theme": {
-        "primary": "#FFF",
-        "secondary": "#000"
-      }
+        "backdrop": true,
+        "borders": true,
+        "opacity": "0.6",
+        "primary": "#2d2a0d",
+        "secondary": "#874545",
+        "rounded": true
+      },
+      "userId": 1
+    },
+    {
+      "id": "FP4eEV1",
+      "description": "fdafdafda",
+      "genres": [
+        "fdafdafda"
+      ],
+      "name": "fafdaf",
+      "theme": {
+        "backdrop": false,
+        "borders": true,
+        "opacity": "0.7",
+        "primary": "#557a3b",
+        "secondary": "#d1a4a4",
+        "rounded": false
+      },
+      "userId": 1
+    },
+    {
+      "id": "afda",
+      "description": "fdafdsaF DAFDSA",
+      "genres": [
+        "fdafdsaF DAFDSA"
+      ],
+      "name": "BANDA NUEVA",
+      "theme": {
+        "borders": true,
+        "opacity": "0.4",
+        "primary": "#110202",
+        "secondary": "#ffffff",
+        "rounded": true
+      },
+      "userId": 1
+    },
+    {
+      "id": "bandanuevados",
+      "description": "djkslñakfj dlafdksla jfdsla ja fjdslafdsa",
+      "genres": [
+        "djkslñakfj dlafdksla jfdsla ja fjdslafdsa"
+      ],
+      "name": "BANDA NUEVA DOS",
+      "theme": {
+        "borders": true,
+        "opacity": "0.2",
+        "primary": "#440909",
+        "secondary": "#a12525"
+      },
+      "userId": 1
     }
   ],
   "rooms": [
