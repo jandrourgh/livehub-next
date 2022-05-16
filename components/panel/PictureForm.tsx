@@ -9,10 +9,14 @@ interface IPictureFormProps {
 
 const PictureForm = ({ band, token }: IPictureFormProps) => {
     const onSubmit = async (values: any) =>{
-        console.log(values.image[0])
-        
+      console.log("submit")
+        console.log(values.image[0]) 
         const dataSend= new FormData()
         dataSend.append("image", values.image[0] )
+        if(band){
+          console.log(band.id)
+          dataSend.append("band", band.id)
+        }
         const response = await fetch("api/bands/changePicture", {
             body: dataSend,
             headers: {"authorization": `Bearer ${token}`}, 
@@ -34,7 +38,7 @@ const PictureForm = ({ band, token }: IPictureFormProps) => {
                     <label htmlFor="image">Upload image</label>
                     <FileField id="image" hidden name="image"></FileField>
                 </div>
-                <button>Change Image</button>
+                <button type="submit">Change Image</button>
             </form>
         </div>
       )}

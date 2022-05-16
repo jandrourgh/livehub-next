@@ -1,5 +1,5 @@
 import { IBand } from "interfaces/Band"
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import BandForm from "./BandForm"
 import PictureForm from "./PictureForm"
 
@@ -10,7 +10,9 @@ interface IBandsProfilePanelProps {
 const BandsProfilePanel = ({bands, token}: IBandsProfilePanelProps) => {
     const [selectedBand, setSelectedBand] = useState<null | IBand>(null)
 
-    
+    const handleEditBandClick = useCallback((band: IBand)=>{
+        setSelectedBand(band)
+    }, [])
 
     useEffect(()=>{
         console.log(bands.length, "DENTRO DE BANDSPROFILEPANEL")
@@ -27,7 +29,7 @@ const BandsProfilePanel = ({bands, token}: IBandsProfilePanelProps) => {
                 {bands.map((band, i)=>
                     <article key={i}>
                         <div><p>{band.name}</p></div>
-                        <div><button>Edit</button></div>
+                        <div><button onClick={()=>{handleEditBandClick(band)}}>Edit</button></div>
                     </article>
                 )}
                 <BandForm band={selectedBand}/>
