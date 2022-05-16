@@ -6,6 +6,7 @@ import HexColorPickerAdapter from "./HexColorPickerAdapter";
 import Image from 'next/image'
 import FileField from "./FileField";
 import {getFormData} from "helpers/forms/ObjectToFormData"
+import { useEffect } from "react";
 
 interface BandFormProps {
     band: IBand | null,
@@ -14,6 +15,9 @@ interface BandFormProps {
 }
 
 const BandForm = ({band, token, editing}: BandFormProps)=>{
+    useEffect(()=>{
+        console.log("band changed")
+    }, [band])
     const onSubmit = async (values: any) =>{
         const response = await fetch("api/bands/save", {
             body: JSON.stringify({...values, id: editing?band?.id:undefined,}),
@@ -29,10 +33,13 @@ const BandForm = ({band, token, editing}: BandFormProps)=>{
     <div>
         <Form
             onSubmit={onSubmit}
+            subscription={{values: true}}
             validate={()=>validate}
             render={({handleSubmit, values}) => (
                 <form onSubmit={handleSubmit}>
-                    <h2>New band</h2>
+                    <h2>
+                        {editing?`Editing band ${band?.name}`:"Uploading band"}
+                    </h2>
                     <div>
                         <h3>Band Info</h3>
                         <div>
@@ -70,7 +77,7 @@ const BandForm = ({band, token, editing}: BandFormProps)=>{
                         </div>
                         <div>
                             <label htmlFor="borders">Borders</label>
-                            <Field name="borders" initialValue={band?.theme.borders} id="borders" component="input" type="checkbox"></Field>
+                            <Field name="borders" defaultValue={band?.theme.borders} id="borders" component="input" type="checkbox"></Field>
                         </div>
                         <div>
                             <label htmlFor="round">Rounded corners</label>

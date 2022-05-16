@@ -15,13 +15,17 @@ const BandsProfilePanel = ({bands, token}: IBandsProfilePanelProps) => {
         setSelectedBand(band)
         setEditing(true)
     }, [])
+    const handleNewBandClick = useCallback(()=>{
+        setSelectedBand(null)
+        setEditing(false)
+    }, [])
 
     useEffect(()=>{
         console.log(bands.length, "DENTRO DE BANDSPROFILEPANEL")
     }, [bands])
     return (<section>
         <h2>My Bands</h2>
-        <button>Add Band</button>
+        <button onClick={handleNewBandClick}>Add Band</button>
         {
             !bands.length?
             <article>

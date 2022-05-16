@@ -4,6 +4,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { getUidFromRequest } from 'helpers/auth/getUidFromRequest'
 import { IBand, IBandUpload } from 'interfaces/Band'
 import { ITheme } from 'interfaces/Theme'
+import { userCanEditBand } from 'helpers/api/userCanEditBand'
 
 interface ISaveFormResponse{
     message: string
@@ -18,6 +19,13 @@ export default async function handler(
     const uid = getUidFromRequest(req)
     const band = JSON.parse(req.body) as IBandUpload
     console.log(band)
+    if(band.id){
+        //esto igual hay que testearlo
+        if(await userCanEditBand(uid, band.id)==false){
+            console.log(uid, band.id)
+            res.status(403).json({message: "You can't do that!"})
+        }
+    }
   
     const bandToUpload: Partial<IBand> = {
         id: band.id?band.id:band.name.toLocaleLowerCase().replaceAll(" ", ""),

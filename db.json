@@ -84,13 +84,13 @@
         "sodales vel lacus et",
         "facilisis congue ipsum."
       ],
-      "name": "HOLA",
+      "name": "vacua mirada",
       "theme": {
         "backdrop": true,
         "borders": true,
         "opacity": "0.6",
-        "primary": "#2d2a0d",
-        "secondary": "#874545",
+        "primary": "#8a8238",
+        "secondary": "#cd4949",
         "rounded": true
       },
       "userId": 1
@@ -101,7 +101,7 @@
       "genres": [
         "fdafdafda"
       ],
-      "name": "fafdaf",
+      "name": "fdafdsa fdafsda",
       "theme": {
         "backdrop": false,
         "borders": true,
@@ -134,12 +134,14 @@
       "genres": [
         "djkslñakfj dlafdksla jfdsla ja fjdslafdsa"
       ],
-      "name": "BANDA NUEVA DOS",
+      "name": "fdafdsa fdafsda2",
       "theme": {
+        "backdrop": false,
         "borders": true,
         "opacity": "0.2",
         "primary": "#440909",
-        "secondary": "#a12525"
+        "secondary": "#a12525",
+        "rounded": false
       },
       "userId": 1
     }
