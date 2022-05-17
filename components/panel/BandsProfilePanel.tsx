@@ -7,8 +7,9 @@ interface IBandsProfilePanelProps {
     bands: IBand[]
     token: string
     updateBand: (band: IBand) => void
+    logOut: ()=>void
 }
-const BandsProfilePanel = ({bands, token, updateBand}: IBandsProfilePanelProps) => {
+const BandsProfilePanel = ({bands, token, updateBand, logOut}: IBandsProfilePanelProps) => {
     const [selectedBand, setSelectedBand] = useState<null | Partial<IBand>>(null)
     const [editing, setEditing] = useState(false)
 
@@ -35,28 +36,24 @@ const BandsProfilePanel = ({bands, token, updateBand}: IBandsProfilePanelProps) 
 
     const updateBandFromForm = (band: IBand) => {
         console.log(band, "en el componente padre")
-        // const bandToUpdate: IBand|undefined = bands.find(prevBand=>prevBand.id ===band.id)
-        // if(bandToUpdate){
-        //     console.log("ya hay banda")
-        //     updateBand(bandToUpdate)
-        // } else {
-        //     console.log("es una banda nueva")
-        //     updateBand(bandToUpdate)
-        // }
         updateBand(band)
     }
+    const handleLogOut = useCallback(()=>{
+        logOut()
+    }, [logOut])
 
     useEffect(()=>{
         console.log(bands.length, "DENTRO DE BANDSPROFILEPANEL")
     }, [bands])
     return (<section>
+        <button onClick={handleLogOut}>Log Out</button>
         <h2>My Bands</h2>
         <button onClick={handleNewBandClick}>Add Band</button>
-        {
-            !bands.length?
-            <article>
-                <h3>There are no bands here</h3>
-            </article>
+        <>
+            {!bands.length?
+                <article>
+                    <h3>There are no bands here</h3>
+                </article>
             :<>
                 {bands.map((band, i)=>
                     <article key={i}>
@@ -64,11 +61,12 @@ const BandsProfilePanel = ({bands, token, updateBand}: IBandsProfilePanelProps) 
                         <div><button onClick={()=>{handleEditBandClick(band)}}>Edit</button></div>
                     </article>
                 )}
-                <BandForm band={selectedBand} token={token} editing={editing} updateBand={updateBandFromForm}/>
-                <PictureForm band={selectedBand} token={token} editing={editing}/>
-            </>
+            </>}
+            <BandForm band={selectedBand} token={token} editing={editing} updateBand={updateBandFromForm}/>
+            <PictureForm band={selectedBand} token={token} editing={editing}/>
+        </>
 
-        }
+        
     </section>)
 }
 export default BandsProfilePanel

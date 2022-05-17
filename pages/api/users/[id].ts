@@ -5,7 +5,7 @@ import { IToken } from "interfaces/Token";
 import { IUser, IUserProfile } from "interfaces/User";
 import { getBandsByUserId } from "helpers/api/getBandsByUserId";
 interface SingleUserResponse {
-    bands: IBand[],
+    bands?: IBand[],
     role: string,
     userData:IUserProfile
 }
@@ -41,7 +41,11 @@ export default async function handler(
                         })
                         break;
                     case "employee":
-                        console.log("quiero tu info y la de los locales donde trabajas")
+                        console.log("quiero tu info, la de los locales donde trabajas y sus reservas")
+                        res.status(200).json({
+                            userData: {email: userData.email, firstName: userData.email, id: userData.id, lastName: userData.lastName, userName: userData.userName},
+                            role: 'employee'
+                        })
                         break;
                     case "admin":
                         console.log("quiero toda la info de la bd")

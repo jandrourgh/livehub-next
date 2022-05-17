@@ -5,4 +5,5 @@ export interface IPanelData {
     userData: IUserProfile,
     bands: IBand[]
     //bookings: IBooking[]
+    role: string
 }

@@ -19,6 +19,7 @@ const Panels: NextPage = () => {
     //const [userId, setUserId] = useState(id)
     const router = useRouter()
     useEffect(() => {
+      console.log("fetcheando")
         const fetchData = async(token: string) =>{
             const tokenPayload = decode(token) as IToken
             //console.log(tokenPayload)
@@ -70,10 +71,14 @@ const Panels: NextPage = () => {
       }
     }
 
+    const logOut = () => {
+      localStorage.removeItem("user")
+      router.push("/login")
+    }
     return (
         <PageLayout >
         {panelData===null || token===null ? "Loading" :
-          <PanelLayout panelData={panelData} token={token} updateBand={updateBandFromLayout}/>}
+          <PanelLayout panelData={panelData} token={token} updateBand={updateBandFromLayout} logOut={logOut}/>}
         </PageLayout>
 
     )
