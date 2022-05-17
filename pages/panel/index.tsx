@@ -8,6 +8,7 @@ import {decode} from 'jsonwebtoken'
 import { IToken } from "interfaces/Token";
 import { useRouter } from 'next/router'
 import PanelLayout from "components/PanelLayout";
+import { IBand } from "interfaces/Band";
 
 
 
@@ -47,10 +48,32 @@ const Panels: NextPage = () => {
         router.push("/login")
       }
     }, [router]);
+
+    const updateBandFromLayout = (band: IBand) => {
+      console.log(band, "EN LA PAGINA")
+      console.log(panelData?.bands)
+      if(panelData!=null){
+        let alreadyThere = false
+        const newPanelData:IPanelData = {...panelData, bands: panelData.bands.map((prevBand)=>{
+          if(band.id === prevBand.id){
+            alreadyThere = true;
+            return band
+          } else {
+            return prevBand
+          }
+          
+        })}
+        if(alreadyThere == false){
+         newPanelData.bands.push(band)   
+        }
+        setPanelData(newPanelData)
+      }
+    }
+
     return (
         <PageLayout >
         {panelData===null || token===null ? "Loading" :
-          <PanelLayout panelData={panelData} token={token}/>}
+          <PanelLayout panelData={panelData} token={token} updateBand={updateBandFromLayout}/>}
         </PageLayout>
 
     )

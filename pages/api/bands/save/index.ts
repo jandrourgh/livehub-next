@@ -7,7 +7,8 @@ import { ITheme } from 'interfaces/Theme'
 import { userCanEditBand } from 'helpers/api/userCanEditBand'
 
 interface ISaveFormResponse{
-    message: string
+    message?: string
+    band?: IBand
 }
 
 
@@ -27,7 +28,7 @@ export default async function handler(
         }
     }
   
-    const bandToUpload: Partial<IBand> = {
+    const bandToUpload: IBand = {
         id: band.id?band.id:band.name.toLocaleLowerCase().replaceAll(" ", ""),
         description: band.description,
         genres: band.genres?.split(", "),
@@ -40,6 +41,7 @@ export default async function handler(
             secondary: band.secondary,
             rounded: band.round
         },
+        isLive: false,
         userId: uid
     }
     const responseSaveBand = await fetch(`http://localhost:3001/bands/${band.id?band.id:""}`, {
@@ -49,5 +51,5 @@ export default async function handler(
         
     })
     //console.log(responseSaveBand)
-    res.status(200).json({message: "OKK"})
+    res.status(200).json({message:"Band successfully loaded", band: bandToUpload})
 }

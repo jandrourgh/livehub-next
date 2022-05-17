@@ -74,25 +74,19 @@
       "id": "vacuamirada",
       "description": "afdsafafdsafd ds fda fringilla. Suspendisse potenti. Nam maximus ipsum odio, vitae ultricies massa elementum ac. Donec ultrices faucibus luctus. Morbi gravida mauris vitae consequat dapibus. Proin sed erat augue. Nullam aliquet euismod vestibulum. Quisque vitae viverra massa, ut vulputate odio. Cras vel nibh vitae ligula feugiat efficitur. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas et odio nec quam scelerisque semper. Pellentesque nulla velit, aliquet sed auctor et, finibus vitae sem. Etiam dolor quam, finibus sit amet mi ac, placerat vulputate nisi. Quisque iaculis mi at fringilla feugiat. Quisque neque sapien, sodales vel lacus et, facilisis congue ipsum.",
       "genres": [
-        "afdsafafdsafd ds fda fringilla. Suspendisse potenti. Nam maximus ipsum odio",
-        "vitae ultricies massa elementum ac. Donec ultrices faucibus luctus. Morbi gravida mauris vitae consequat dapibus. Proin sed erat augue. Nullam aliquet euismod vestibulum. Quisque vitae viverra massa",
-        "ut vulputate odio. Cras vel nibh vitae ligula feugiat efficitur. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas et odio nec quam scelerisque semper. Pellentesque nulla velit",
-        "aliquet sed auctor et",
-        "finibus vitae sem. Etiam dolor quam",
-        "finibus sit amet mi ac",
-        "placerat vulputate nisi. Quisque iaculis mi at fringilla feugiat. Quisque neque sapien",
-        "sodales vel lacus et",
-        "facilisis congue ipsum."
+        "a",
+        "b",
+        "c,d"
       ],
-      "name": "vacua mirada",
+      "name": "vaafdafda cosa",
       "theme": {
         "backdrop": true,
         "borders": true,
         "opacity": "0.6",
         "primary": "#8a8238",
-        "secondary": "#cd4949",
-        "rounded": true
+        "secondary": "#cd4949"
       },
+      "isLive": false,
       "userId": 1
     },
     {
@@ -132,17 +126,109 @@
       "id": "bandanuevados",
       "description": "djkslñakfj dlafdksla jfdsla ja fjdslafdsa",
       "genres": [
-        "djkslñakfj dlafdksla jfdsla ja fjdslafdsa"
+        "post punk",
+        "black metal"
       ],
       "name": "fdafdsa fdafsda2",
       "theme": {
         "backdrop": false,
         "borders": true,
-        "opacity": "0.2",
+        "opacity": "0.5",
         "primary": "#440909",
-        "secondary": "#a12525",
-        "rounded": false
+        "secondary": "#a12525"
       },
+      "userId": 1
+    },
+    {
+      "id": "dfafda",
+      "description": "hacemos cosas",
+      "genres": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "name": "dfafda",
+      "theme": {
+        "backdrop": true,
+        "borders": true,
+        "opacity": "0.2",
+        "primary": "#c21515",
+        "secondary": "#141414",
+        "rounded": true
+      },
+      "userId": 1
+    },
+    {
+      "id": "12121",
+      "description": "121 dafda 21",
+      "genres": [
+        "uno",
+        "dos",
+        "tres"
+      ],
+      "name": "12121",
+      "theme": {
+        "backdrop": true,
+        "borders": true,
+        "opacity": "0.4",
+        "primary": "#cb1c1c",
+        "secondary": "#4f3232"
+      },
+      "isLive": false,
+      "userId": 1
+    },
+    {
+      "id": "fdafdsa112121",
+      "description": "1asda",
+      "genres": [
+        "223"
+      ],
+      "name": "fdafdsa112121",
+      "theme": {
+        "backdrop": false,
+        "borders": false,
+        "opacity": 1,
+        "primary": "#291616",
+        "secondary": "#b25353"
+      },
+      "isLive": false,
+      "userId": 1
+    },
+    {
+      "id": "CJ4IHlN",
+      "description": "",
+      "genres": [
+        ""
+      ],
+      "name": "AFDAFDAF DAFD AFDA",
+      "theme": {
+        "backdrop": false,
+        "borders": false,
+        "opacity": 1,
+        "primary": "#FFF",
+        "secondary": "#000"
+      },
+      "isLive": false,
+      "userId": 1
+    },
+    {
+      "id": "unamovidanueva",
+      "description": "dsaf",
+      "genres": [
+        "fa",
+        "dfaf ",
+        "fda"
+      ],
+      "name": "UNA MOVIDA NUEVA",
+      "theme": {
+        "backdrop": true,
+        "borders": false,
+        "opacity": "0",
+        "primary": "#df6767",
+        "secondary": "#570f0f"
+      },
+      "isLive": false,
       "userId": 1
     }
   ],

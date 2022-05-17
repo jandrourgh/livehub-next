@@ -3,7 +3,7 @@ import FileField from "./FileField";
 import { Form } from "react-final-form";
 
 interface IPictureFormProps {
-  band: IBand | null;
+  band: Partial<IBand> | null;
   token: string,
   editing: boolean
 }
@@ -16,7 +16,7 @@ const PictureForm = ({ band, token }: IPictureFormProps) => {
         dataSend.append("image", values.image[0] )
         if(band){
           console.log(band.id)
-          dataSend.append("band", band.id)
+          dataSend.append("band", band.id?band.id:"")
         }
         const response = await fetch("api/bands/changePicture", {
             body: dataSend,
