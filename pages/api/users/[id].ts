@@ -41,7 +41,8 @@ export default async function handler(
                         })
                         break;
                     case "employee":
-                        console.log("quiero tu info, la de los locales donde trabajas y sus reservas")
+                        console.log("quiero tu info, la del local donde trabajas y sus reservas")
+                        const room = await getRoomByEmployeeId(userData.id)
                         res.status(200).json({
                             userData: {email: userData.email, firstName: userData.email, id: userData.id, lastName: userData.lastName, userName: userData.userName},
                             role: 'employee'
