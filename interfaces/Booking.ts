@@ -8,3 +8,12 @@ export interface IBooking{
     validated: boolean,
 
 }
+export interface ITurn{
+    start: string,
+    end: string,
+    available: boolean,
+    turnId: number
+}
+export interface IBookingList{
+
+}

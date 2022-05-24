@@ -38,6 +38,7 @@ const PanelLayout = ({panelData, token, updateBand, logOut}: IPanelDataProps) =>
     return (
         <>
             PANEL LAYOUT
+            <button onClick={logOut}>Log Out</button>
             {
                 
             }
@@ -56,7 +57,7 @@ const PanelLayout = ({panelData, token, updateBand, logOut}: IPanelDataProps) =>
             {
                 panelData.role=="employee"?
                     <>
-                        <EmployeeBookingsPanel token={token}/>
+                        <EmployeeBookingsPanel token={token} roomInfo={panelData.roomData}/>
                     </>:<></>
             }
         </>

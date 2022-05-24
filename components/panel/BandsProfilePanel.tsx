@@ -9,7 +9,7 @@ interface IBandsProfilePanelProps {
     updateBand: (band: IBand) => void
     logOut: ()=>void
 }
-const BandsProfilePanel = ({bands, token, updateBand, logOut}: IBandsProfilePanelProps) => {
+const BandsProfilePanel = ({bands, token, updateBand}: IBandsProfilePanelProps) => {
     const [selectedBand, setSelectedBand] = useState<null | Partial<IBand>>(null)
     const [editing, setEditing] = useState(false)
 
@@ -38,15 +38,11 @@ const BandsProfilePanel = ({bands, token, updateBand, logOut}: IBandsProfilePane
         console.log(band, "en el componente padre")
         updateBand(band)
     }
-    const handleLogOut = useCallback(()=>{
-        logOut()
-    }, [logOut])
 
     useEffect(()=>{
         console.log(bands.length, "DENTRO DE BANDSPROFILEPANEL")
     }, [bands])
     return (<section>
-        <button onClick={handleLogOut}>Log Out</button>
         <h2>My Bands</h2>
         <button onClick={handleNewBandClick}>Add Band</button>
         <>

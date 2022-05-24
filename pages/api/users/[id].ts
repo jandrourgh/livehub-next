@@ -4,10 +4,13 @@ import { verify} from 'jsonwebtoken'
 import { IToken } from "interfaces/Token";
 import { IUser, IUserProfile } from "interfaces/User";
 import { getBandsByUserId } from "helpers/api/getBandsByUserId";
+import { getRoomByEmployeeId } from "helpers/api/getRoomByEmployeeId";
+import { IRoom } from "interfaces/Room";
 interface SingleUserResponse {
     bands?: IBand[],
     role: string,
-    userData:IUserProfile
+    userData:IUserProfile,
+    roomData?: IRoom
 }
 interface SingleUserRequest {
     id: number
@@ -45,6 +48,7 @@ export default async function handler(
                         const room = await getRoomByEmployeeId(userData.id)
                         res.status(200).json({
                             userData: {email: userData.email, firstName: userData.email, id: userData.id, lastName: userData.lastName, userName: userData.userName},
+                            roomData: room,
                             role: 'employee'
                         })
                         break;

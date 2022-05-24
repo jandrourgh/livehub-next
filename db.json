@@ -17,7 +17,7 @@
       "lastName": "Uno",
       "userName": "userUno",
       "role": "user",
-      "hours": 55380
+      "hours": 55394
     },
     {
       "id": 2,
@@ -44,7 +44,12 @@
       "id": "aednaum",
       "userId": 0,
       "name": "AEDNAUM",
-      "genres": ["shoegaze", "doom", "experimental", "black metal"],
+      "genres": [
+        "shoegaze",
+        "doom",
+        "experimental",
+        "black metal"
+      ],
       "description": "Cras ultrices quam vitae ante cursus molestie. Donec non ullamcorper lacus, congue bibendum elit. Sed quis feugiat diam. Etiam non aliquet felis. Curabitur in eros vitae nunc condimentum lobortis consectetur id arcu. Fusce molestie sollicitudin nisl, vitae fermentum dui lobortis id. Ut vitae ante sed arcu molestie fermentum dictum non arcu. Morbi euismod sagittis imperdiet. Vestibulum eu mauris et dolor porttitor varius.",
       "isLive": false,
       "theme": {
@@ -57,7 +62,9 @@
       "userId": 0,
       "name": "Ultrasaurus",
       "description": "Sed nec odio et libero imperdiet aliquet. Nam vel dignissim nibh. Maecenas tempus pretium enim, et efficitur diam porttitor quis. Donec in mauris iaculis, malesuada enim eu, rhoncus turpis. Cras sagittis urna ac pellentesque commodo. Proin dictum eleifend faucibus. Maecenas condimentum ut lorem eget dictum. Aenean volutpat felis nibh, et commodo turpis interdum in.",
-      "genres": ["doom"],
+      "genres": [
+        "doom"
+      ],
       "isLive": false,
       "theme": {
         "primary": "#FFF",
@@ -67,7 +74,11 @@
     {
       "id": "d",
       "description": "ñfdkla",
-      "genres": ["a", "b", "c"],
+      "genres": [
+        "a",
+        "b",
+        "c"
+      ],
       "name": "d",
       "theme": {
         "backdrop": false,
@@ -82,11 +93,17 @@
   ],
   "rooms": [
     {
-      "id": 0,
-      "equipment": ["ENGL Powerball", "Yamaha drumkit"],
-      "address": "C/ Lepanto 19 Benidorm",
-      "openUntil": 12321321
-      
+      "equipment": [
+        "fdafda",
+        "fdafd",
+        "safdsa",
+        "dsfafda"
+      ],
+      "address": "dfafdaf dafd a",
+      "id": 0
     }
+  ],
+  "bookings": [
+    
   ]
 }

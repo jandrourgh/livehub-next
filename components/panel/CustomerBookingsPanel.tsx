@@ -1,3 +1,4 @@
+import BookingForm from "./BookingForm"
 import BuyHoursForm from "./BuyHoursForm"
 
 interface BookingsPanelProps {
@@ -11,6 +12,7 @@ const CustomerBookingsPanel = ({token}: BookingsPanelProps) => {
             <section>
                 <p>Hours remaining: </p>
                 <BuyHoursForm token={token}></BuyHoursForm>
+                <BookingForm token={token}></BookingForm>
             </section>
         </>
     )

@@ -1,15 +1,17 @@
-import GenerateBookingsForm from "./GenerateBookingsForm"
+import { IRoom } from "interfaces/Room"
+import EditRoomInfoForm from "./EditRoomInfoForm"
 
 interface EmployeeBookingsPanelProps {
     token: string
+    roomInfo: IRoom
 }
 
-const EmployeeBookingsPanel = ({token}: EmployeeBookingsPanelProps) => {
+const EmployeeBookingsPanel = ({token, roomInfo}: EmployeeBookingsPanelProps) => {
 
     return(
         <>
             <h2>Bookings</h2>
-            <GenerateBookingsForm token={token}/>
+            <EditRoomInfoForm token={token} data={roomInfo}/>
         </>
     )
 }

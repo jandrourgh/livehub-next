@@ -8,6 +8,9 @@ export interface IUser {
     role: "user" | "employee" | "admin",
     hours?: number
 }
+export interface IEmployee extends IUser {
+    worksAt: number
+}
 export interface IUserLogin {
     email?: string,
     userName?: string,
