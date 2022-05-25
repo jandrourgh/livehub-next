@@ -1,6 +1,7 @@
 import moment from "moment";
 
 export const generateTurns = (date: string, except: number[] = []) => {
+    console.log("generateturns date ", date)
     const openingTime = "09:00";
     const sessionDurationMinutes = 60;
     const restDurationMinutes = 10;
