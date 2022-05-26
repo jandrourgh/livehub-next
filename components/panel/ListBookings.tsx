@@ -1,6 +1,7 @@
 import { generateTurns } from "helpers/bookings/GenerateTurns";
 import { IBooking, ITurn } from "interfaces/Booking";
 import moment, { Moment } from "moment";
+import Link from "next/link";
 import { useEffect } from "react";
 
 const ListBookings = ({ bookings }: { bookings: IBooking[]}) => {
@@ -22,15 +23,17 @@ const ListBookings = ({ bookings }: { bookings: IBooking[]}) => {
         const day = momentDate.day()
         console.log(year, month, day)
         return <> <p>{momentDate.format('DD-MM-YYYY')}</p>
-            {  
+            {  <>
                 <ul>    
                     {
-                        booking.turnsRequested.map((turn, i)=> 
+                        booking.turnsRequested.sort().map((turn, i)=> 
                         <li key={i}>
                             {printTurn(turns[turn])}
                         </li>)
                     }
                 </ul>
+                <Link href={`bookings/${booking.id}`}>Go to booking</Link>
+                </>
             }
         </>
         

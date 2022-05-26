@@ -11,23 +11,28 @@ interface BookingsPanelProps {
 const CustomerBookingsPanel = ({token}: BookingsPanelProps) => {
 
     const [bookings, setBookings] = useState<IBooking[]>([])
+    const [loading, setLoading] = useState(true)
     // useEffect(()=>{
     //     refreshBookings()
     // },[refreshBookings])
     useEffect(()=>{
-        const fetchBookings = async () => {
-            console.log("refresh bookings")
-            const bookingsResponse = await fetch('http://localhost:3000/api/bookings/getUserBookings', {
-                headers:{"Authorization": `Bearer ${token}`}
-            })
-            const data: IBooking[] = await bookingsResponse.json()
-            console.log(data)
-            return data
+        if(loading){
+            const fetchBookings = async () => {
+                console.log("refresh bookings")
+                const bookingsResponse = await fetch('http://localhost:3000/api/bookings/getUserBookings', {
+                    headers:{"Authorization": `Bearer ${token}`}
+                })
+                const data: IBooking[] = await bookingsResponse.json()
+                console.log(data)
+                return data
+            }
+            fetchBookings().then(data=>setBookings(data))
+            setLoading(false)
         }
-        fetchBookings().then(data=>setBookings(data))
-    }, [token])
-    const refreshBookings = async () => {
+    }, [token, loading])
 
+    const refreshBookings = async () => {
+        setLoading(true)
     }
 
     return (
