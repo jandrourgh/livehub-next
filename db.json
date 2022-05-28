@@ -17,7 +17,7 @@
       "lastName": "Uno",
       "userName": "userUno",
       "role": "user",
-      "hours": 55394
+      "hours": 107
     },
     {
       "id": 2,
@@ -77,15 +77,33 @@
       "genres": [
         "a",
         "b",
-        "c"
+        "c",
+        "DD"
       ],
-      "name": "d",
+      "name": "DKÑADFAÑ",
       "theme": {
-        "backdrop": false,
+        "backdrop": true,
         "borders": true,
         "opacity": "0.2",
-        "primary": "#903030",
-        "secondary": "#300202"
+        "primary": "#590c0c",
+        "secondary": "#572d2d"
+      },
+      "isLive": false,
+      "userId": 1
+    },
+    {
+      "id": "dafad",
+      "description": "dasfdsa",
+      "genres": [
+        "fdafdsa"
+      ],
+      "name": "dafad",
+      "theme": {
+        "backdrop": false,
+        "borders": false,
+        "opacity": 1,
+        "primary": "#FFF",
+        "secondary": "#000"
       },
       "isLive": false,
       "userId": 1
@@ -103,7 +121,5 @@
       "id": 0
     }
   ],
-  "bookings": [
-    
-  ]
+  "bookings": []
 }
