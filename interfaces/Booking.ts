@@ -1,19 +1,14 @@
-export interface IBooking{
-    from: number,
-    to: number,
-    bandId: number,
-    roomId: number,
-    support: string[],
-    validatedBy?: number,
-    validated: boolean,
-
+export interface IBooking {
+    turnsRequested: number[];
+    date: string;
+    room: number;
+    uid: number;
+    id: number;
 }
-export interface ITurn{
-    start: string,
-    end: string,
-    available: boolean,
-    turnId: number
+export interface ITurn {
+    start: string;
+    end: string;
+    available: boolean;
+    turnId: number;
 }
-export interface IBookingList{
-
-}
+export interface IBookingList {}
