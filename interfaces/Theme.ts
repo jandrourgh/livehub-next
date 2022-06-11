@@ -4,5 +4,8 @@ export interface ITheme{
     backdrop: boolean,
     borders: boolean,
     rounded: boolean,
-    opacity: number
+    opacity: number,
+    description: string,
+    imgUrl?: string,
+    name: string,
 }

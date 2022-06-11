@@ -5,7 +5,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from 'styles/Home.module.css'
 import PageLayout from 'components/PageLayout'
-
+import React from "react"
 
 
 interface ISingleBandProps {
@@ -18,7 +18,7 @@ interface IBandId {
     id: string
 }
 
-const Band: NextPage<ISingleBandProps> = (props) => {
+const Band: NextPage<ISingleBandProps> = (props: ISingleBandProps) => {
     const {band} = props
     const router=useRouter()
     const [isLoading, setLoading] = useState(false)

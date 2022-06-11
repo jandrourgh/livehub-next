@@ -1,14 +1,15 @@
 import { IBookingList, ITurn } from "interfaces/Booking";
 import moment from "moment";
-import { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 
 interface ISelectTurnProps {
     date: string;
     room: number;
     requestTurn: (turnId: number, addRemove: boolean) => void;
     values: number[];
+    showError: boolean
 }
-const SelectTurn = ({ date, room, requestTurn, values }: ISelectTurnProps) => {
+const SelectTurn = ({ date, room, requestTurn, values, showError }: ISelectTurnProps) => {
     const [turns, setTurns] = useState<ITurn[]>([]);
     const [bookable, setBookable] = useState<number[]>([])
     const printReadable = (start: string, end: string) => {
@@ -43,8 +44,8 @@ const SelectTurn = ({ date, room, requestTurn, values }: ISelectTurnProps) => {
     return (
         <ul>
             {turns.map((turn, i) => (
-                <li key={i}>
-                    <label htmlFor={`turn_${i}`}>
+                <li key={i} className="form-check">
+                    <label htmlFor={`turn_${i}`} className="form-check-label">
                         {printReadable(turn.start, turn.end)}
                     </label>
 
@@ -52,16 +53,24 @@ const SelectTurn = ({ date, room, requestTurn, values }: ISelectTurnProps) => {
                         type="checkbox"
                         name="turn"
                         value={turn.turnId}
+                        //checked={values.includes(i)}
                         checked={values.includes(i)}
-                        onChange={(evt) => handleChange(evt)}
+                        onChange={(evt) =>  {
+                            console.log(evt)
+                            handleChange(evt)
+                        }}
                         //disabled={!turn.available}
+                        className="form-check-input"
                         id={`turn_${i}`}
                     />
                     {
                         !turn.available?
-                        <label htmlFor={`turn_${i}`}>
+                        <p>
+                            <label htmlFor={`turn_${i}`}>
                         Not available
-                        </label> : <></>
+                        </label> 
+                        </p>
+                        : <></>
                     }
                     
                 </li>

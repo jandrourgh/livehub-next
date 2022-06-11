@@ -1,7 +1,7 @@
 import PageLayout from "components/PageLayout";
 import { IUser, IUserAuthResponse } from "interfaces/User";
 import { NextPage } from "next";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IPanelData } from "interfaces/Panel";
 import { ParsedUrlQuery } from "querystring";
 import {decode} from 'jsonwebtoken'
@@ -9,6 +9,8 @@ import { IToken } from "interfaces/Token";
 import { useRouter } from 'next/router'
 import PanelLayout from "components/PanelLayout";
 import { IBand } from "interfaces/Band";
+
+
 
 
 
@@ -31,7 +33,7 @@ const Panels: NextPage = () => {
         }
       if (localStorage.user) {
           //console.log("hay cosas");
-          var localStorageData: IUserAuthResponse = JSON.parse(localStorage.user);
+          const localStorageData: IUserAuthResponse = JSON.parse(localStorage.user);
           //console.log(localStorageData.token);
           fetchData(localStorageData.token).then((data)=>{
             data.json().then(panelDataResponse=>{
@@ -76,7 +78,7 @@ const Panels: NextPage = () => {
       router.push("/login")
     }
     return (
-        <PageLayout >
+        <PageLayout>
         {panelData===null || token===null ? "Loading" :
           <PanelLayout panelData={panelData} token={token} updateBand={updateBandFromLayout} logOut={logOut}/>}
         </PageLayout>

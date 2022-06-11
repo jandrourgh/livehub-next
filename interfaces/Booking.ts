@@ -4,6 +4,7 @@ export interface IBooking {
     room: number;
     uid: number;
     id: number;
+    tickets?: ITicket[]
 }
 export interface ITurn {
     start: string;
@@ -12,3 +13,8 @@ export interface ITurn {
     turnId: number;
 }
 export interface IBookingList {}
+
+export interface ITicket {
+    sender: "user"|"admin",
+    body: "string"
+}

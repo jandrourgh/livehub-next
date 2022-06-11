@@ -7,7 +7,7 @@ export const generateTurns = (date: string, except: number[] = []) => {
     const restDurationMinutes = 10;
     const closingTime = "22:00";
     let currentDate = moment(date + " " + openingTime);
-    let turns = [];
+    const turns = [];
     let index = 0;
     while (
         moment(currentDate).isBefore(
@@ -17,8 +17,8 @@ export const generateTurns = (date: string, except: number[] = []) => {
             )
         )
     ) {
-        let start = currentDate;
-        let end = moment(currentDate).add(sessionDurationMinutes, "minutes");
+        const start = currentDate;
+        const end = moment(currentDate).add(sessionDurationMinutes, "minutes");
         turns.push({
             start: start.format(),
             end: end.format(),

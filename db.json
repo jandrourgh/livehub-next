@@ -17,7 +17,7 @@
       "lastName": "Uno",
       "userName": "userUno",
       "role": "user",
-      "hours": 107
+      "hours": 111
     },
     {
       "id": 2,
@@ -61,9 +61,13 @@
       "id": "ultrasaurus",
       "userId": 0,
       "name": "Ultrasaurus",
+      "imgUrl": "ultrasaurus.png",
       "description": "Sed nec odio et libero imperdiet aliquet. Nam vel dignissim nibh. Maecenas tempus pretium enim, et efficitur diam porttitor quis. Donec in mauris iaculis, malesuada enim eu, rhoncus turpis. Cras sagittis urna ac pellentesque commodo. Proin dictum eleifend faucibus. Maecenas condimentum ut lorem eget dictum. Aenean volutpat felis nibh, et commodo turpis interdum in.",
       "genres": [
         "doom"
+      ],
+      "songsUrl": [
+        ""
       ],
       "isLive": false,
       "theme": {
@@ -72,32 +76,34 @@
       }
     },
     {
-      "id": "d",
-      "description": "ñfdkla",
+      "id": "migrupo",
+      "description": "dapiofd apfd adfs",
       "genres": [
-        "a",
-        "b",
-        "c",
-        "DD"
+        "jdfkañ",
+        "djsa,dfañ"
       ],
-      "name": "DKÑADFAÑ",
+      "name": "mi grupo",
       "theme": {
         "backdrop": true,
-        "borders": true,
-        "opacity": "0.2",
-        "primary": "#590c0c",
-        "secondary": "#572d2d"
+        "borders": false,
+        "opacity": "0.1",
+        "primary": "#ffffff",
+        "secondary": "#ff6969"
       },
       "isLive": false,
-      "userId": 1
+      "userId": 1,
+      "imgUrl": "/uploads/image_migrupo.jpeg",
+      "songUrl": "/uploads/song_migrupo.mp3"
     },
     {
-      "id": "dafad",
-      "description": "dasfdsa",
+      "id": "bandados",
+      "description": "ALDKFAFDA FDA FDA FDSA",
       "genres": [
-        "fdafdsa"
+        "232",
+        "232",
+        "FDÑA"
       ],
-      "name": "dafad",
+      "name": "BANDA DOS",
       "theme": {
         "backdrop": false,
         "borders": false,
@@ -106,18 +112,21 @@
         "secondary": "#000"
       },
       "isLive": false,
-      "userId": 1
+      "userId": 1,
+      "songUrl": "/uploads/song_bandados.mp3",
+      "imgUrl": "/uploads/image_bandados.jpeg",
+      "songName": "DR0000_0049"
     }
   ],
   "rooms": [
     {
       "equipment": [
-        "fdafda",
-        "fdafd",
-        "safdsa",
-        "dsfafda"
+        "Engl Powerball",
+        "Yamaha Drumkit",
+        "P.A.",
+        "Ashdown Mag 300"
       ],
-      "address": "dfafdaf dafd a",
+      "address": "C/ Lepanto, 19, Benidorm",
       "id": 0
     }
   ],
@@ -356,7 +365,71 @@
       "date": "2030-08-23",
       "room": 0,
       "uid": 1,
-      "id": 24
+      "id": 24,
+      "tickets": [
+        {
+          "sender": "admin",
+          "body": "eh"
+        },
+        {
+          "sender": "user",
+          "body": "oiga puto"
+        },
+        {
+          "sender": "user",
+          "body": "que tal"
+        },
+        {
+          "sender": "user",
+          "body": "yo bien"
+        },
+        {
+          "sender": "user",
+          "body": "vale"
+        },
+        {
+          "sender": "user",
+          "body": "ok tio"
+        },
+        {
+          "sender": "user",
+          "body": "hola"
+        },
+        {
+          "sender": "user",
+          "body": "que tal"
+        },
+        {
+          "sender": "user",
+          "body": "vale"
+        },
+        {
+          "sender": "user",
+          "body": "si"
+        },
+        {
+          "sender": "user",
+          "body": "VENGA"
+        }
+      ]
+    },
+    {
+      "turnsRequested": [
+        0
+      ],
+      "date": "2022-06-11",
+      "room": 0,
+      "uid": 1,
+      "id": 25
+    },
+    {
+      "turnsRequested": [
+        1
+      ],
+      "date": "2022-06-11",
+      "room": 0,
+      "uid": 1,
+      "id": 26
     }
   ]
 }

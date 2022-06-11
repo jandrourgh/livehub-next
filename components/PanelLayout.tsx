@@ -4,6 +4,7 @@ import { useEffect } from "react"
 import BandsProfilePanel from "./panel/BandsProfilePanel"
 import CustomerBookingsPanel from "./panel/CustomerBookingsPanel"
 import EmployeeBookingsPanel from "./panel/EmployeeBookingsPanel"
+import React from "react"
 
 interface IPanelDataProps {
     panelData: IPanelData,
@@ -19,7 +20,6 @@ const PanelLayout = ({panelData, token, updateBand, logOut}: IPanelDataProps) =>
     }
 
     useEffect(()=>{
-        console.log(panelData)
 
         switch(panelData.role){
             case "user":
@@ -36,22 +36,26 @@ const PanelLayout = ({panelData, token, updateBand, logOut}: IPanelDataProps) =>
 
 
     return (
-        <>
-            PANEL LAYOUT
-            <button onClick={logOut}>Log Out</button>
-            {
-                
-            }
+        <> 
+            <div className="row p-2 pt-0">
+                <div className="col-12 d-flex justify-content-end">
+                    <button onClick={logOut} className=" btn btn-light mx-4">Log Out</button>
+
+                </div>
+
+            </div>
             {
                 panelData.role=="user"?
-                    <>
-                        <BandsProfilePanel 
-                            updateBand={updateBandFromProfilePanel}
-                            token={token}
-                            bands={panelData.bands}
-                            logOut={logOut}/>
-                        <CustomerBookingsPanel token={token} />
-                    </>
+                    <div className="container p-3">
+                        <div className="row">
+                            <BandsProfilePanel 
+                                updateBand={updateBandFromProfilePanel}
+                                token={token}
+                                bands={panelData.bands}
+                                logOut={logOut}/>
+                            <CustomerBookingsPanel token={token} userData={panelData.userData} />
+                        </div>
+                    </div>
                     :<></>
             }
             {

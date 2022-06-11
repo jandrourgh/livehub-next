@@ -4,12 +4,19 @@ import {
     formatCVC,
     formatExpirationDate
   } from '../../helpers/forms/CardUtils'
+  import React from "react"
 
 interface BuyHoursFormProps {
-    token: string
+    token: string,
+    closeForm: ()=>void
 }
 
-const BuyHoursForm = ({ token }: BuyHoursFormProps) => {
+const BuyHoursForm = ({ token, closeForm }: BuyHoursFormProps) => {
+
+    const handleCloseFormClick = (evt: React.MouseEvent<HTMLButtonElement>) => {
+      evt.preventDefault()
+      closeForm()
+    }
 
     const onSubmit = async (values: any) => {
         console.log("submit credit card", values)
@@ -24,7 +31,11 @@ const BuyHoursForm = ({ token }: BuyHoursFormProps) => {
 
     return (
         <>
-            <h3>Buy hours</h3>
+            <div className="d-flex justify-content-between">
+              <h3>Buy hours</h3>
+              <button className=" btn btn-danger" onClick={(evt)=>handleCloseFormClick(evt)}> Close </button>
+
+            </div>
             <Form
       onSubmit={onSubmit}
       render={({
@@ -37,45 +48,58 @@ const BuyHoursForm = ({ token }: BuyHoursFormProps) => {
       }) => {
         return (
           <form onSubmit={handleSubmit}>
-            <div>
+            <div className="input-group m-2 ">
+                <label htmlFor="" className="input-group-text">Hours</label>
                 <Field name="hours"
                     component="input"
                     type="number"
                     defaultValue={1}
+                    className="form-control"
                 >
 
                 </Field>
             </div>
 
-            <div>
+            <div className="input-group m-2">
+            <label htmlFor="" className="input-group-text">Card Number</label>
+
               <Field
                 name="number"
                 component="input"
                 type="text"
                 pattern="[\d| ]{16,22}"
-                placeholder="Card Number"
                 defaultValue={""}
+                className="form-control"
                 format={formatCreditCardNumber}
               />
             </div>
-            <div>
+            <div className="input-group m-2">
+            <label htmlFor="" className="input-group-text">Name</label>
+
               <Field
                 name="name"
                 component="input"
                 type="text"
-                placeholder="Name"
+                className="form-control"
               />
             </div>
-            <div>
+            
+            <div className="input-group m-2">
+              <label htmlFor="" className="input-group-text">Valid thru</label>
               <Field
                 name="expiry"
                 component="input"
                 type="text"
                 pattern="\d\d/\d\d"
                 placeholder="Valid Thru"
+                className="form-control"
                 format={formatExpirationDate}
               />
+            </div>
+            <div className="input-group m-2">
+              <label htmlFor="" className="input-group-text">CVC</label>
               <Field
+                className="form-control"
                 name="cvc"
                 component="input"
                 type="text"
@@ -83,20 +107,21 @@ const BuyHoursForm = ({ token }: BuyHoursFormProps) => {
                 placeholder="CVC"
                 format={formatCVC}
               />
+
             </div>
             <div>
-                <p>Total: </p>
-                <p>{values.hours * HOUR_PRICE} €</p>
+                <h4>Total: {values.hours * HOUR_PRICE} €</h4>
             </div>
             <div className="buttons">
                 
-              <button type="submit" disabled={submitting}>
+              <button type="submit" disabled={submitting} className="btn btn-dark">
                 Submit
               </button>
               <button
                 type="button"
                 onClick={form.reset}
                 disabled={submitting || pristine}
+                className="btn btn-clear m-2"
               >
                 Reset
               </button>

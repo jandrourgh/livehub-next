@@ -8,9 +8,13 @@ import { IBooking } from "interfaces/Booking";
 import { decode } from "jsonwebtoken";
 import { IToken } from "interfaces/Token";
 import { IUserAuthResponse } from "interfaces/User";
+import React from "react"
+import { sendEtagResponse } from "next/dist/server/send-payload";
+import UserBookingLayout from "components/bookings/UserBookingLayout";
 
 interface ISingleBookingProps {
     booking: IBooking;
+    type: "admin" | "user"
 }
 interface ISingleBookingParams {
     params: IBookingId;
@@ -19,15 +23,15 @@ interface IBookingId {
     id: string;
 }
 
-const BookingPage: NextPage<ISingleBookingProps> = (props) => {
+const BookingPage: NextPage<ISingleBookingProps> = (props: ISingleBookingProps) => {
     const { booking } = props;
     const [isLoading, setLoading] = useState(false);
     const [token, setToken] = useState<null | string>(null);
     const [auth, setAuth] = useState(false);
+    const [type, setType] = useState<string>("")
 
     const router = useRouter();
     useEffect(() => {
-        console.log("fetcheando");
         const fetchData = async (token: string) => {
             const tokenPayload = decode(token) as IToken;
             //console.log(tokenPayload)
@@ -39,15 +43,14 @@ const BookingPage: NextPage<ISingleBookingProps> = (props) => {
         };
         if (localStorage.user) {
             //console.log("hay cosas");
-            var localStorageData: IUserAuthResponse = JSON.parse(
+            const localStorageData: IUserAuthResponse = JSON.parse(
                 localStorage.user
             );
-            console.log(localStorageData.token);
             fetchData(localStorageData.token)
                 .then((data) => {
                     data.json()
                         .then((bookingResponse) => {
-                            console.log(bookingResponse);
+                            setType(bookingResponse.type)
                             setAuth(true);
                             setToken(localStorageData.token);
                         })
@@ -59,14 +62,12 @@ const BookingPage: NextPage<ISingleBookingProps> = (props) => {
                     router.push("/login");
                 });
         } else {
-            console.log("no hay nada");
             router.push("/login");
         }
     }, [router]);
 
-    useEffect(() => {
-        console.log(props);
-    }, []);
+    // useEffect(() => {
+    // }, []);
     return (
         <div className={styles.container}>
             <Head>
@@ -78,7 +79,8 @@ const BookingPage: NextPage<ISingleBookingProps> = (props) => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <PageLayout>
-                <h2>Pagina de la reserva</h2>
+                {type=="admin"? <>Admin</>:""}
+                {type=="user"?<UserBookingLayout booking={booking} token={token}/>:""}
             </PageLayout>
         </div>
     );
@@ -97,7 +99,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: ISingleBookingParams) {
     const res = await fetch(`http://localhost:3001/bookings/${params.id}`);
-    const booking: IBooking = await res.json();
+    const booking: ISingleBookingProps = await res.json();
     return { props: { booking } };
 }
 export default BookingPage;

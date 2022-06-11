@@ -3,32 +3,28 @@ import multer from 'multer';
 import { NextApiRequest, NextApiResponse } from "next";
 import {isMyBandMiddleware} from "helpers/api/isMyBandMiddleware";
 import {expressjwt} from "express-jwt"
-import {json, urlencoded} from "body-parser"
 import { getUidFromRequest } from "helpers/auth/getUidFromRequest";
 import { userCanEditBand } from "helpers/api/userCanEditBand";
+import { IBand } from "interfaces/Band";
 
 
 interface NextApiRequestWithFile extends NextApiRequest {
-  file: File
+  file: Express.Multer.File
 }
 
 const upload = multer({
+    
     storage: multer.diskStorage({
       destination: './public/uploads',
-      filename: (req, file, cb) => cb(null, file.originalname),
+      filename: (req, file, cb) => {
+        const format =  file.mimetype.split("/")[1]
+        if(format != "png" && format != "jpg" && format != "jpeg"){
+          return cb(new Error("Invalid file type"), "")
+        } else {
+          return cb(null, `image_${req.body.band}.${format}`)
+        }
+      },
     }),
-    // TO-DO: requerir autorización para guardar el archivo
-    // fileFilter: async (req, file, cb) => {
-    //   const uid = getUidFromRequest(req)
-    //   console.log("estoy en filefilter", uid, req.body)
-    //   if( await userCanEditBand(uid, req.body.band)){
-    //     console.log("es tu grupo")
-    //     cb(null, true)
-    //   } else {
-    //     console.log("no es tu grupo")
-    //     cb(null, false)
-    //   }
-    // }
   });
 
   const apiRoute = nextConnect<NextApiRequestWithFile, NextApiResponse>({
@@ -44,8 +40,18 @@ const upload = multer({
   apiRoute.use(upload.single('image'));
   apiRoute.use(isMyBandMiddleware)
   
-  apiRoute.post((req, res) => {
-    console.log("dentro de post", req.body.band)
+  apiRoute.post(async (req, res) => {
+    const fileName = req.file.filename
+    const band = req.body.band
+    const getBandResponse = await fetch(`http://localhost:3001/bands/${band}`)
+    const bandData = await getBandResponse.json() as IBand
+    bandData.imgUrl = `/uploads/${fileName}`
+    const updateBandResponse = await fetch(`http://localhost:3001/bands/${band}`, {
+      method:"PUT",
+      headers: {"Content-type": "application/json"},
+
+      body: JSON.stringify(bandData)
+    })
     res.status(200).json({ data: 'success' });
   });
   

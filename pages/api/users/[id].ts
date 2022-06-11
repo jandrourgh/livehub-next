@@ -35,19 +35,19 @@ export default async function handler(
                 switch(userData.role){
                     case "user":
                         console.log("quiero tu info y las de tus bandas")
-                        const bands = await getBandsByUserId(userData.id)
+                        let bands = await getBandsByUserId(userData.id)
                         console.log("tengo las bandas", bands)
                         res.status(200).json({
-                            userData: {firstName: userData.firstName, id: userData.id, lastName: userData.lastName, userName:userData.userName, email:userData.email},
+                            userData: {firstName: userData.firstName, id: userData.id, lastName: userData.lastName, userName:userData.userName, email:userData.email,hours: userData.hours},
                             bands: bands,
                             role: 'user'
                         })
                         break;
                     case "employee":
                         console.log("quiero tu info, la del local donde trabajas y sus reservas")
-                        const room = await getRoomByEmployeeId(userData.id)
+                        let room = await getRoomByEmployeeId(userData.id)
                         res.status(200).json({
-                            userData: {email: userData.email, firstName: userData.email, id: userData.id, lastName: userData.lastName, userName: userData.userName},
+                            userData: {email: userData.email, firstName: userData.email, id: userData.id, lastName: userData.lastName, userName: userData.userName, },
                             roomData: room,
                             role: 'employee'
                         })

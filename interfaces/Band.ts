@@ -6,6 +6,9 @@ export interface IBand{
     genres: string[],
     isLive: boolean,
     description: string,
+    imgUrl?: string,
+    songUrl?:string,
+    songName?: string,
     theme: ITheme
 }
 
