@@ -18,3 +18,7 @@ export interface ITicket {
     sender: "user"|"admin",
     body: "string"
 }
+
+export interface IFullBookingInfo extends IBooking {
+    messages?: string[],
+}

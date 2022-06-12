@@ -346,7 +346,21 @@
       "date": "2026-11-25",
       "room": 0,
       "uid": 1,
-      "id": 21
+      "id": 21,
+      "tickets": [
+        {
+          "sender": "user",
+          "body": "hola"
+        },
+        {
+          "sender": "user",
+          "body": "que tal"
+        },
+        {
+          "sender": "admin",
+          "body": "bien, tio aqui andamos"
+        }
+      ]
     },
     {
       "turnsRequested": [
@@ -425,6 +439,10 @@
         {
           "sender": "user",
           "body": "VENGA"
+        },
+        {
+          "sender": "admin",
+          "body": "estamos?"
         }
       ]
     },

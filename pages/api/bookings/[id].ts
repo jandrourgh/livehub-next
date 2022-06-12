@@ -19,7 +19,7 @@ export default async function handler(
         const allBookings: IBooking[] = await getAllBookings()
         const thisBooking = allBookings.find(booking=>booking.id == parseInt(id))
         if(thisBooking){
-            const fullBooking = getFullBookingInfo(thisBooking)
+            const fullBooking = await getFullBookingInfo(thisBooking)
             if(user.role == 'user'){
                 if(thisBooking?.uid === user.id) {
                     res.status(200).json({booking: fullBooking, type: "user"})    
@@ -27,6 +27,7 @@ export default async function handler(
                     res.status(403).json({message: "This isn't your booking"})
                 }
             } else if (['admin', 'employee'].includes(user.role)) {
+                console.log(fullBooking)
                 res.status(200).json({fullBooking, type: "admin"})
             } else {
                 res.status(403).json({message: "Invalid user data"})

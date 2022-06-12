@@ -11,14 +11,21 @@ const TicketWindow = ({booking, token}: TokenWindowProps) => {
     const [message, setMessage] = useState("")
 
     const fetchMessages = async (booking:IBooking, token: string) => {
-        //console.log(booking, token)
+        console.log(booking, token)
         const getBookingResponse = await fetch(`http://localhost:3000/api/bookings/${booking.id}`, {
             headers: {"Authorization": `Bearer ${token}`}
         })
-        const response = await getBookingResponse.json() as {booking :IBooking}
-        
+        const response = await getBookingResponse.json()
+        console.log(response)
         //console.log(response.booking.tickets)
-        return response.booking.tickets as ITicket[]
+        const tickets = []
+        console.log(response)
+        if(response.booking){
+            return response.booking.tickets as ITicket[]
+        } else if (response.fullBooking){
+            return response.fullBooking.tickets as ITicket[]
+        }
+        //return response.booking.tickets as ITicket[]
 
     }
     
