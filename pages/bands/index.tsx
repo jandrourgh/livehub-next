@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from 'styles/Home.module.css'
@@ -10,7 +10,7 @@ interface BandsPageProps {
   bands: IBand[]
 }
 
-const Bands: NextPage<BandsPageProps> = (props) => {
+const Bands: NextPage<BandsPageProps> = (props: BandsPageProps) => {
   const {bands} = props
   return (
     <div className={styles.container}>
@@ -20,10 +20,13 @@ const Bands: NextPage<BandsPageProps> = (props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <PageLayout>
-        <section>
-          {bands.length?bands.map((band, i)=>
-            <BandItem key={i} band={band}></BandItem>
-          ):"no hay bandas"}
+        <section className="container">
+          <h2 className="m-3">All Bands</h2>
+          <div className="row">
+            {bands.length?bands.map((band, i)=>
+              <BandItem key={i} band={band}></BandItem>
+            ):"no hay bandas"}
+          </div>
         </section>
       </PageLayout>
     </div>

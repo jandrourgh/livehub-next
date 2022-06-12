@@ -3,8 +3,34 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import PageLayout from '../components/PageLayout'
+import React, {useEffect, useState} from "react"
+import { IPost } from 'interfaces/Posts'
+import { IRoom } from 'interfaces/Room'
 
 const Home: NextPage = () => {
+
+  const [rooms, setRooms] = useState<IRoom[]>([])
+  const [posts, setPosts] = useState<IPost[]>([])
+
+  useEffect(()=>{
+    const fetchData = async ( ) => {
+      const getRoomsResponse = await fetch('http://localhost:3000/api/rooms')
+      const allRooms = await getRoomsResponse.json()
+      console.log(allRooms.rooms)
+      const getPostsResponse = await fetch('http://localhost:3000/api/posts')
+      const allPosts = await getPostsResponse.json()
+      console.log(allPosts)
+      return {rooms: allRooms.rooms, posts: allPosts}
+
+    }
+    fetchData().then((data)=> {
+      setRooms(data.rooms)
+      setPosts(data.posts)
+    })
+  }, [])
+
+  console.log(rooms, "ROOMS")
+
   return (
     <div className={styles.container}>
       <Head>
@@ -14,7 +40,48 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <PageLayout>
-
+        <div className="container">
+          <div className="row">
+            <div className="col-8">
+              <h1>Welcome to liveHUB</h1>
+              <div>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis odit nulla fugit et repellat nobis ea, dolorem sequi iste? Possimus!
+              </div>
+            </div>
+            <div className="col-12">
+              <h2>Where are we?</h2>
+              <p>Right now we are at one location. Check it out!</p>
+               {
+                rooms.map((room, i) => (
+                  <div key={i} className="card m-2">
+                    <div className="card-header">{room.address}</div>
+                    <div className="card-body">
+                      <p>Here we have: </p>
+                      {
+                        room.equipment.map((item, i) => (
+                          <li key={i}>{item}</li>
+                        ))
+                      }
+                    </div>
+                  </div>
+                ))
+              } 
+            </div>
+            <div className="col-12">
+              <h2>Latest News: </h2>
+              <div>
+              {
+                posts.map((post, i)=>(
+                  <div key={i} className="card m-2">
+                    <div className="card-header">{post.title}</div>
+                    <div className="card-body">{post.body}</div>
+                  </div>
+                ))
+              }
+              </div>
+            </div>
+          </div>
+        </div>
       </PageLayout>
     </div>
   )

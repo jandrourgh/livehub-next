@@ -28,7 +28,11 @@ const PageLayout = ({ children }: ScriptProps) => {
 
     </div>
       <main>{children}</main>
-      <footer>copyright Livehub 2022</footer>
+      <div className="container">
+  <footer className="py-3 my-4 ">
+    <p className="text-center text-muted">© 2022 liveHUB</p>
+  </footer>
+</div>
     </>
   );
 };

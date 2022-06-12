@@ -61,7 +61,6 @@
       "id": "ultrasaurus",
       "userId": 0,
       "name": "Ultrasaurus",
-      "imgUrl": "ultrasaurus.png",
       "description": "Sed nec odio et libero imperdiet aliquet. Nam vel dignissim nibh. Maecenas tempus pretium enim, et efficitur diam porttitor quis. Donec in mauris iaculis, malesuada enim eu, rhoncus turpis. Cras sagittis urna ac pellentesque commodo. Proin dictum eleifend faucibus. Maecenas condimentum ut lorem eget dictum. Aenean volutpat felis nibh, et commodo turpis interdum in.",
       "genres": [
         "doom"
