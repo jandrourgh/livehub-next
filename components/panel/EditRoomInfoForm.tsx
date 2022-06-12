@@ -4,6 +4,8 @@ import { DateTime } from 'luxon'
 import moment from 'moment'
 import { useEffect, useMemo } from 'react'
 import {Form, Field, FormSpy} from 'react-final-form'
+import React from "react"
+
 interface IEditRoomInfoFormProps {
     token: string
     data: IRoom
@@ -14,6 +16,7 @@ const EditRoomInfoForm = ({ token, data }: IEditRoomInfoFormProps) => {
     useEffect(()=>{
         const date = new Date()
         console.log(date.getFullYear())
+        console.log(data)
     })
 
     const handleSubmit = (values: {until: string, equipment:string, address:string}) => {
@@ -34,12 +37,6 @@ const EditRoomInfoForm = ({ token, data }: IEditRoomInfoFormProps) => {
         <>
             <Form onSubmit={handleSubmit} render={({handleSubmit, values, })=> (
                 <form onSubmit={handleSubmit}>
-                    <div>
-                        <label htmlFor="until">Accept bookings until: </label>
-                        <Field defaultValue='2022-05-28' name="until" id="until" component="input" type='date'>
-
-                        </Field>
-                    </div>
                     <div>
                         <label htmlFor="equipment">Equipment</label>
                         <Field name="equipment" id="equipment" component="textarea" >

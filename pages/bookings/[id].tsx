@@ -11,6 +11,7 @@ import { IUserAuthResponse } from "interfaces/User";
 import React from "react"
 import { sendEtagResponse } from "next/dist/server/send-payload";
 import UserBookingLayout from "components/bookings/UserBookingLayout";
+import AdminBookingLayout from "components/bookings/AdminBookingLayout";
 
 interface ISingleBookingProps {
     booking: IBooking;
@@ -79,7 +80,7 @@ const BookingPage: NextPage<ISingleBookingProps> = (props: ISingleBookingProps) 
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <PageLayout>
-                {type=="admin"? <>Admin</>:""}
+                {type=="admin"? <AdminBookingLayout booking={booking} token={token}/>:""}
                 {type=="user"?<UserBookingLayout booking={booking} token={token}/>:""}
             </PageLayout>
         </div>
