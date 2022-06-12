@@ -11,15 +11,15 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  console.log(req.body)
-  console.log(req.headers)
+  //console.log(req.body)
+  //console.log(req.headers)
   const userId = getUidFromRequest(req)
-  console.log(req.headers.authorization)
-  console.log(userId)
+  //console.log(req.headers.authorization)
+  //console.log(userId)
   const roomRequest = JSON.parse(req.body) as IRoom
-  console.log(roomRequest, "-----request")
+  //console.log(roomRequest, "-----request")
   const room = await getRoomByEmployeeId(userId)
-  console.log(room)
+  //console.log(room)
   if(room){
       const updateRoomDBResponse = fetch(`http://localhost:3001/rooms/${room.id}`, {
           method:"PUT",

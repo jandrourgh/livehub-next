@@ -25,8 +25,8 @@ export default async function handler(
     res: NextApiResponse
   ) {
         const query = req.query
-        console.log(query)
-        console.log(req,  "publish")
+        //console.log(query)
+        //console.log(req,  "publish")
         res.status(200).json({})
     } 
 

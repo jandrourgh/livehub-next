@@ -16,7 +16,7 @@ interface BandFormProps {
 const BandForm = ({ band, token, editing, updateBand, closeModal }: BandFormProps) => {
   const formState = useRef<null | FormApi>(null);
   useEffect(() => {
-    console.log("band changed", band);
+    // console.log("band changed", band);
     if (formState.current != null) {
       formState.current.mutators.setValues(band);
     }
@@ -43,11 +43,11 @@ const BandForm = ({ band, token, editing, updateBand, closeModal }: BandFormProp
         onSubmit={onSubmit}
         mutators={{
           setValues: (args, state, { changeValue }) => {
-            //console.log("llamando a setvalues")
-            //console.log(args)
+            //// console.log("llamando a setvalues")
+            //// console.log(args)
             if (args[0] !== null) {
               const bandArgs: IBand = args[0];
-              console.log(bandArgs);
+              // console.log(bandArgs);
               changeValue(state, "name", () => bandArgs.name);
               changeValue(state, "genres", () => bandArgs.genres.join(", "));
               changeValue(state, "description", () => bandArgs.description);

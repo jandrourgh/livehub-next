@@ -8,7 +8,7 @@ export default async function handler(
     res: NextApiResponse
 ) {
     const uid = getUidFromRequest(req)
-    console.log(uid, "UID")
+    //console.log(uid, "UID")
     const allBookings: IBooking[] = await getAllBookings()
     const userBookings = allBookings.filter(booking=>booking.uid == uid)
     res.status(200).json(userBookings)

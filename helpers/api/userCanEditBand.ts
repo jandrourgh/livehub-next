@@ -6,7 +6,7 @@ export const userCanEditBand = async (uid: number, bandId: string) => {
   const bands: IBand[] = await bandsResponse.json();
   const userResponse = await fetch(`http://localhost:3001/users/${uid}`);
   const user: IUser = await userResponse.json();
-  console.log(bands);
+  //console.log(bands);
   const found = bands.find((band) => band.id == bandId);
   if (found) {
     if (

@@ -19,13 +19,13 @@ const BuyHoursForm = ({ token, closeForm }: BuyHoursFormProps) => {
     }
 
     const onSubmit = async (values: any) => {
-        console.log("submit credit card", values)
+        // console.log("submit credit card", values)
         const response = await fetch('api/bookings/buyHours', {
             headers: { "Authorization" : `Bearer ${token}`},
             method: "POST",
             body: JSON.stringify(values)
         })
-        console.log(response)
+        // console.log(response)
     }
     const HOUR_PRICE = 9.95
 

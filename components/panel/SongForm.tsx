@@ -19,11 +19,11 @@ const SongForm = ({ band, token }: IPictureFormProps) => {
     const [songName, setSongName] = useState(band?.songName)
     const [hasChanged, setHasChanged] = useState(false)
     const onSubmit = async (values: IValues) =>{
-      console.log("submit")
-        console.log(values.song[0]) 
+      //console.log("submit")
+        //console.log(values.song[0]) 
         const dataSend= new FormData()
         if(band){
-          console.log(band, band.id)
+          //console.log(band, band.id)
           dataSend.append("band", band.id?band.id:"")
         }
         if(songName){
@@ -35,12 +35,12 @@ const SongForm = ({ band, token }: IPictureFormProps) => {
             headers: {"authorization": `Bearer ${token}`}, 
             method: "POST",
         })
-        console.log(response)
+        //console.log(response)
     }
     const validate = (values: IValues) => {
       if(values.song?.length){
         const file = values.song[0]
-        console.log(file)
+        //console.log(file)
         const reader = new FileReader()
         const url = reader.readAsDataURL(file)
         reader.onloadend = (e) => {

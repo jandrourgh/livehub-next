@@ -16,14 +16,14 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ISaveFormResponse>
 ) {
-    console.log("handler de save band")
+    //console.log("handler de save band")
     const uid = getUidFromRequest(req)
     const band = JSON.parse(req.body) as IBandUpload
-    console.log(band)
+    //console.log(band)
     if(band.id){
         //esto igual hay que testearlo
         if(await userCanEditBand(uid, band.id)==false){
-            console.log(uid, band.id)
+            //console.log(uid, band.id)
             res.status(403).json({message: "You can't do that!"})
         }
     }

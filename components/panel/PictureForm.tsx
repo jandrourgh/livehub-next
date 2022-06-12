@@ -18,11 +18,11 @@ const PictureForm = ({ band, token }: IPictureFormProps) => {
     const [image, setImage] = useState<string|undefined>(band?.imgUrl)
     const [hasChanged, setHasChanged] = useState(false)
     const onSubmit = async (values: IValues) =>{
-      console.log("submit")
-        console.log(values.image[0]) 
+      // console.log("submit")
+        // console.log(values.image[0]) 
         const dataSend= new FormData()
         if(band){
-          console.log(band, band.id)
+          // console.log(band, band.id)
           dataSend.append("band", band.id?band.id:"")
         }
         dataSend.append("image", values.image[0] )
@@ -31,16 +31,16 @@ const PictureForm = ({ band, token }: IPictureFormProps) => {
             headers: {"authorization": `Bearer ${token}`}, 
             method: "POST",
         })
-        console.log(response)
+        // console.log(response)
     }
     const validate = (values: IValues) => {
       if(values.image?.length){
         const file = values.image[0]
-        console.log(file)
+        // console.log(file)
         const reader = new FileReader()
         const url = reader.readAsDataURL(file)
         reader.onloadend = (e) => {
-          //console.log(reader.result?.toString())
+          // console.log(reader.result?.toString())
           if(reader.result){
             setHasChanged(true)
             setImage(reader.result?.toString())

@@ -38,7 +38,7 @@ export const getItemFormData = (formData: any, name: string, data: any): void =>
                 case 'FileList':
                     for (let item = 0; item < data.length; item += 1) {
                         formData.append(`${name}[${item}]`, data.item(item));
-                        console.log(name, item)
+                        //console.log(name, item)
                     }
                     break;
                 case 'Date':

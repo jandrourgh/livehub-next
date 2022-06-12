@@ -7,11 +7,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     //console.log(req)
     const uid = getUidFromRequest(req)
     const data = JSON.parse(req.body)
-    console.log(`Usuario ${ uid } quiere comprar ${ data.hours} horas`)
+    //console.log(`Usuario ${ uid } quiere comprar ${ data.hours} horas`)
     const userResponse = await fetch(`http://localhost:3001/users/${uid}` )
     const user: IUser = await userResponse.json()
     const hours = Math.floor(parseInt(data.hours))
-    console.log(user)
+    //console.log(user)
     if(user.hours!==undefined){
         user.hours = user.hours + hours
     } else {

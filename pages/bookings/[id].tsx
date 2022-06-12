@@ -80,8 +80,8 @@ const BookingPage: NextPage<ISingleBookingProps> = (props: ISingleBookingProps) 
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <PageLayout>
-                {type=="admin"? <AdminBookingLayout booking={booking} token={token}/>:""}
-                {type=="user"?<UserBookingLayout booking={booking} token={token}/>:""}
+                {type=="admin"&&token? <AdminBookingLayout booking={booking} token={token}/>:""}
+                {type=="user"&&token?<UserBookingLayout booking={booking} token={token}/>:""}
             </PageLayout>
         </div>
     );

@@ -118,13 +118,28 @@
       "songName": "DR0000_0049"
     }
   ],
+  "posts": [
+    {
+      "body": "yo bien y tu",
+      "title": "HOLA QUE TAL",
+      "uid": 2,
+      "id": 5
+    },
+    {
+      "body": "y otra",
+      "title": "Una cosa",
+      "uid": 2,
+      "id": 6
+    }
+  ],
   "rooms": [
     {
       "equipment": [
         "Engl Powerball",
         "Yamaha Drumkit",
         "P.A.",
-        "Ashdown Mag 300"
+        "Ashdown Mag 300",
+        "Otra cosa"
       ],
       "address": "C/ Lepanto, 19, Benidorm",
       "id": 0

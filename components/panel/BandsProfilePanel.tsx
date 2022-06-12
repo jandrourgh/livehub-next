@@ -41,12 +41,12 @@ const BandsProfilePanel = ({bands, token, updateBand}: IBandsProfilePanelProps) 
     }, [])
 
     const updateBandFromForm = (band: IBand) => {
-        console.log(band, "en el componente padre")
+        // console.log(band, "en el componente padre")
         updateBand(band)
     }
 
     // useEffect(()=>{
-    //     console.log(bands.length, "DENTRO DE BANDSPROFILEPANEL")
+    //     // console.log(bands.length, "DENTRO DE BANDSPROFILEPANEL")
     // }, [bands])
 
     return (<section className="col-4">

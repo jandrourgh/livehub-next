@@ -23,13 +23,13 @@ const PanelLayout = ({panelData, token, updateBand, logOut}: IPanelDataProps) =>
 
         switch(panelData.role){
             case "user":
-                console.log("user")
+                // console.log("user")
                 break;
             case "employee":
-                console.log("employee")
+                // console.log("employee")
                 break;
             case "admin":
-                console.log("admin")
+                // console.log("admin")
                 break;
         }
     },[panelData])
@@ -61,7 +61,7 @@ const PanelLayout = ({panelData, token, updateBand, logOut}: IPanelDataProps) =>
             {
                 panelData.role=="employee"?
                     <>
-                        <EmployeeBookingsPanel token={token} roomInfo={panelData.roomData}/>
+                        <EmployeeBookingsPanel token={token} roomInfo={panelData.roomData} userData={panelData.userData}/>
                     </>:<></>
             }
         </>

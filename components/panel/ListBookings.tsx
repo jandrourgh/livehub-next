@@ -7,7 +7,7 @@ import React, { useEffect } from "react";
 const ListBookings = ({ bookings }: { bookings: IBooking[]}) => {
     
     const turns = generateTurns(moment().format('YYYY-MM-DD'))
-    console.log(turns)
+    // console.log(turns)
 
     const printTurn = (turn: ITurn) => {
         const startTime = moment(turn.start).format('HH:mm')
@@ -16,15 +16,16 @@ const ListBookings = ({ bookings }: { bookings: IBooking[]}) => {
     }
 
     const printReadable = (booking: IBooking) => {
-        console.log(booking)
+        // console.log(booking)
         const momentDate = moment(booking.date)
         const year = momentDate.year()
         const month = momentDate.month()
         const day = momentDate.day()
-        console.log(year, month, day)
+        // console.log(year, month, day)
         return <div className="card">
             <div className="card-header">
             <h4>{momentDate.format('DD-MM-YYYY')}</h4>
+            <h5>ID: {booking.id}</h5>
                 </div> 
             {  
             <>

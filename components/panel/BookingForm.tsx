@@ -19,11 +19,11 @@ const BookingForm = ({token, bookingSuccessful, closeModal}: {token: string, boo
                 headers: {"Authorization": `Bearer ${token}`}
             })
             const data = await roomsResponse.json()
-            console.log(data)
+            // console.log(data)
             return data as {rooms: IRoom[]}
         }
         if(fetchAgain){
-            console.log("fetchinggg")
+            // console.log("fetchinggg")
             fetchRooms().then(data=>{
                 if(data.rooms.length){
                     setRoom(data.rooms[0].id)
@@ -34,7 +34,7 @@ const BookingForm = ({token, bookingSuccessful, closeModal}: {token: string, boo
         }
     },[token, fetchAgain])
     const requestTurn = (turnId: number, addRemove: boolean) => {
-        console.log(turnId, addRemove )
+        // console.log(turnId, addRemove )
         if(addRemove){
             const turns = turnsRequested;
             turns.push(turnId)
@@ -45,26 +45,26 @@ const BookingForm = ({token, bookingSuccessful, closeModal}: {token: string, boo
             })
             setTurnsRequested(turns)
         }
-        //console.log(turnsRequested)
+        //// console.log(turnsRequested)
     }
     const handleSubmit = async (evt: FormEvent<HTMLFormElement>) => {
         evt.preventDefault()
-        console.log("SUBMIT", turnsRequested, date, room)
-        console.log()
+        // console.log("SUBMIT", turnsRequested, date, room)
+        // console.log()
         const makeBookingRequest = await fetch('http://localhost:3000/api/bookings/makeBooking', {
             headers: {"Authorization": `Bearer ${token}`},
             method: "POST",
             body: JSON.stringify({turnsRequested: turnsRequested, date: date, room:room})
         })
         if(makeBookingRequest.ok){
-            //console.log("ha ido bien")
+            //// console.log("ha ido bien")
             bookingSuccessful()
             setFetchAgain(true)
             setTurnsRequested([])
             setShowError(false)
             closeModal()
         } else {
-            //console.log("noppp")
+            //// console.log("noppp")
             setShowError(true)
         }
 

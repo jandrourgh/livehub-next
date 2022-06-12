@@ -21,7 +21,7 @@ export default async function handler(
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(userToRegister)
     })
-    console.log(response)
+    //console.log(response)
     const data: IUser = await response.json()
     const registerResponse: IUserAuthResponse = {
       firstName: data.email,

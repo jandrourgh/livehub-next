@@ -6,6 +6,8 @@ import PageLayout from "components/PageLayout";
 import { IUserAuthResponse } from "interfaces/User";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import React from "react"
+
 const Auth = () => {
 
   const [userData, setUserData] = useState<null | IUserAuthResponse>(null)
@@ -13,7 +15,7 @@ const Auth = () => {
   const router = useRouter()
 
   const loginCallback = (data: IUserAuthResponse) => {
-    console.log("is logged in", data)
+    //console.log("is logged in", data)
     setUserData(data)
     setAuth(true)
     router.push("/panel")

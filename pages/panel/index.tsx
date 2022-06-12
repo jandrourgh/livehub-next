@@ -21,7 +21,7 @@ const Panels: NextPage = () => {
     //const [userId, setUserId] = useState(id)
     const router = useRouter()
     useEffect(() => {
-      console.log("fetcheando")
+     // console.log("fetcheando")
         const fetchData = async(token: string) =>{
             const tokenPayload = decode(token) as IToken
             //console.log(tokenPayload)
@@ -47,14 +47,14 @@ const Panels: NextPage = () => {
               router.push("/login")
           })        
       } else {
-        console.log("no hay nada");
+        // console.log("no hay nada");
         router.push("/login")
       }
     }, [router]);
 
     const updateBandFromLayout = (band: IBand) => {
-      console.log(band, "EN LA PAGINA")
-      console.log(panelData?.bands)
+      //console.log(band, "EN LA PAGINA")
+      //console.log(panelData?.bands)
       if(panelData!=null){
         let alreadyThere = false
         const newPanelData:IPanelData = {...panelData, bands: panelData.bands.map((prevBand)=>{

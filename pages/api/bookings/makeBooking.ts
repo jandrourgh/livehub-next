@@ -25,11 +25,11 @@ export default async function handler(
     const bookings:IBooking[] = await getAllBookings()
     const bookingsByDay = bookings.filter(booking=>booking.date == requestBody.date)
     const takenTurns = getTakenTurns(bookingsByDay)
-    console.log(takenTurns, booking.turnsRequested, " taken turns vs turns requested")
+    //console.log(takenTurns, booking.turnsRequested, " taken turns vs turns requested")
     const combination = takenTurns.filter(turn=>booking.turnsRequested.includes(turn))
-    console.log(combination, " combination of both")
+    //console.log(combination, " combination of both")
     if(booking.turnsRequested.length && !combination.length){
-        console.log("se puede")
+        //console.log("se puede")
         //console.log(bookingsByDay, "BOOKINGS BY DAY")
         const bookingResponse = await fetch('http://localhost:3001/bookings', {
             method:"POST", 
@@ -38,7 +38,7 @@ export default async function handler(
         })
         res.status(200).json({message: "Booking Successful!"})
     } else {
-        console.log("no se puede")
+        //console.log("no se puede")
         res.status(400).json({message: "Booking Invalid"})
     }
 }

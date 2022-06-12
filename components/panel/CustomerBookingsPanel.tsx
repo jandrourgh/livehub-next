@@ -24,12 +24,12 @@ const CustomerBookingsPanel = ({token, userData}: BookingsPanelProps) => {
     useEffect(()=>{
         if(loading){
             const fetchBookings = async () => {
-                console.log("refresh bookings")
+                // console.log("refresh bookings")
                 const bookingsResponse = await fetch('http://localhost:3000/api/bookings/getUserBookings', {
                     headers:{"Authorization": `Bearer ${token}`}
                 })
                 const data: IBooking[] = await bookingsResponse.json()
-                console.log(data)
+                // console.log(data)
                 return data
             }
             fetchBookings().then(data=>setBookings(data))

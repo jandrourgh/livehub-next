@@ -20,12 +20,12 @@ const SelectTurn = ({ date, room, requestTurn, values, showError }: ISelectTurnP
         )}`;
     };
     const handleChange = (evt: ChangeEvent<HTMLInputElement>) => {
-        console.log("changed")
+        //console.log("changed")
         requestTurn(parseInt(evt.target.value), evt.target.checked);
     };
     useEffect(() => {
         async function fetchBookings() {
-            console.log(date, room);
+            //console.log(date, room);
             const response = await fetch(
                 "http://localhost:3000/api/bookings/getByDayRoom",
                 {
@@ -39,7 +39,7 @@ const SelectTurn = ({ date, room, requestTurn, values, showError }: ISelectTurnP
         if (room >= 0) {
             fetchBookings().then((data) => setTurns(data));
         }
-        console.log("bookable: ", bookable, values)
+        //console.log("bookable: ", bookable, values)
     }, [date, room, bookable, values]);
     return (
         <ul>
@@ -56,7 +56,7 @@ const SelectTurn = ({ date, room, requestTurn, values, showError }: ISelectTurnP
                         //checked={values.includes(i)}
                         checked={values.includes(i)}
                         onChange={(evt) =>  {
-                            console.log(evt)
+                            //console.log(evt)
                             handleChange(evt)
                         }}
                         //disabled={!turn.available}
