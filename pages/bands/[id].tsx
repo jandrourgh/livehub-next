@@ -48,7 +48,7 @@ const Band: NextPage<ISingleBandProps> = (props: ISingleBandProps) => {
                     <ul className="d-flex justify-content-start p-0">
                     {band.genres.map((genre, i)=><li className="badge text-ligt bg-dark mx-2" key={i}>{genre}</li>)}
                 </ul>
-					<div className="col-8 p-3 my-3"style={{ 
+					<div className="col-12 p-3 my-3"style={{ 
                         background: band.theme.secondary&&band.theme.opacity?hexToRgba(band.theme.secondary, band.theme.opacity):"transparent", 
                         backdropFilter: band.theme.backdrop?"blur(8px)":"none",
                         border:band.theme.borders?`1px solid ${band.theme.primary}`:"none",
@@ -63,7 +63,7 @@ const Band: NextPage<ISingleBandProps> = (props: ISingleBandProps) => {
                     }
                     {
                         band.isLive?<div className="row">
-                            <p className="display-1">{band.name} is LIVE!</p>
+                            <p className="display-1">{band.name} is now playing!</p>
                             <p>
                                 To access its streaming, paste this URL on a valid HTTP player, such as VLC 
                             </p>
