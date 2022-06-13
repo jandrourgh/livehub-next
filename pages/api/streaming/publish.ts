@@ -6,6 +6,15 @@ import { IUser, IUserProfile } from "interfaces/User";
 import { getBandsByUserId } from "helpers/api/getBandsByUserId";
 import { getRoomByEmployeeId } from "helpers/api/getRoomByEmployeeId";
 import { IRoom } from "interfaces/Room";
+import Cors from "cors"
+import initMiddleware from "helpers/api/initMiddleware"
+
+const cors = initMiddleware(
+    Cors({
+        methods:['GET, POST, OPTIONS']
+    })
+)
+
 interface SingleUserResponse {
     bands?: IBand[],
     role: string,
@@ -24,6 +33,7 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
   ) {
+        await cors(req, res)
         const query = req.query
         //console.log(query)
         //console.log(req,  "publish")
