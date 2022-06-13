@@ -1,12 +1,20 @@
 import { getToken } from 'helpers/api/getToken'
 import { IUser, IUserAuthResponse, IUserRegister, IUserSave } from 'interfaces/User'
 import type { NextApiRequest, NextApiResponse } from 'next'
+import Cors from "cors"
+import initMiddleware from "helpers/api/initMiddleware"
 
+const cors = initMiddleware(
+    Cors({
+        methods:['GET, POST, OPTIONS']
+    })
+)
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<IUserAuthResponse>
 ) {
+    await cors(req, res)
     const userRequest: IUserRegister = req.body
     const userToRegister: IUserSave = {
       email: userRequest.email,

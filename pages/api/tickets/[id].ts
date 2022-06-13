@@ -4,11 +4,20 @@ import { getAllBookings } from "helpers/bookings/GetAllBookints";
 import { getFullBookingInfo } from "helpers/bookings/GetFullBookingInfo";
 import { IBooking, ITicket } from "interfaces/Booking";
 import { NextApiRequest, NextApiResponse } from "next";
+import Cors from "cors"
+import initMiddleware from "helpers/api/initMiddleware"
+
+const cors = initMiddleware(
+    Cors({
+        methods:['GET, POST, OPTIONS']
+    })
+)
 
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
+    await cors(req, res)
     const uid = getUidFromRequest(req)
     const user = await getUserDataById(uid)
     const {id} = req.query as {id: string}

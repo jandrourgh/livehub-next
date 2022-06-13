@@ -6,7 +6,14 @@ import {expressjwt} from "express-jwt"
 import { getUidFromRequest } from "helpers/auth/getUidFromRequest";
 import { userCanEditBand } from "helpers/api/userCanEditBand";
 import { IBand } from "interfaces/Band";
+import Cors from "cors"
+import initMiddleware from "helpers/api/initMiddleware"
 
+const cors = initMiddleware(
+    Cors({
+        methods:['GET, POST, OPTIONS']
+    })
+)
 
 interface NextApiRequestWithFile extends NextApiRequest {
   file: Express.Multer.File
@@ -41,6 +48,7 @@ const upload = multer({
   apiRoute.use(isMyBandMiddleware)
   
   apiRoute.post(async (req, res) => {
+    await cors(req, res)
     const fileName = req.file.filename
     const band = req.body.band
     const songName = req.body.songname

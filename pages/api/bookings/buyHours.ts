@@ -2,8 +2,17 @@ import { getUidFromRequest } from "helpers/auth/getUidFromRequest";
 import { NextApiRequest, NextApiResponse } from "next";
 import { weekdays } from "moment"
 import { IUser } from "interfaces/User";
+import Cors from "cors"
+import initMiddleware from "helpers/api/initMiddleware"
+
+const cors = initMiddleware(
+    Cors({
+        methods:['GET, POST, OPTIONS']
+    })
+)
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse){
+    await cors(req, res)
     //console.log(req)
     const uid = getUidFromRequest(req)
     const data = JSON.parse(req.body)
