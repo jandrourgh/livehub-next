@@ -47,12 +47,16 @@ export default async function handler(
                 console.log(req.body.name, "publish done")
                 band.isLive = false
             }
-            // const saveBandResponse = await fetch(`http://localhost:3001/bands/${req.body.name}`, {
-            //     method: "PUT",
-            //     headers: {"Content-type": "application/json"},
-            //     body: JSON.stringify()
-            // })
-            res.status(200).json({})
+            const saveBandResponse = await fetch(`http://localhost:3001/bands/${req.body.name}`, {
+                method: "PUT",
+                headers: {"Content-type": "application/json"},
+                body: JSON.stringify(band)
+            })
+            if(saveBandResponse.ok){
+                res.status(200).json({})
+            } else {
+                res.status(500).json({})
+            }
         } else {
             res.status(404).json({})
         }
