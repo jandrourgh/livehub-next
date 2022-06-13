@@ -64,7 +64,6 @@ const Band: NextPage<ISingleBandProps> = (props: ISingleBandProps) => {
                     }
                     {
                         band.isLive?<ReactHlsPlayer src={src} playerRef={playerRef}>
-                            <source ></source>
                         </ReactHlsPlayer>: ""
                     }
 					</div>
