@@ -20,8 +20,8 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ){
+    await cors(req, res)
     if(req.method=="POST"){
-        await cors(req, res)
         const uid = getUidFromRequest(req)
         const userData = await getUserDataById(uid) as IEmployee
         if(userData.role=="employee"){
