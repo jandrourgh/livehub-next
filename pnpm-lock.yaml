@@ -34,6 +34,7 @@ specifiers:
   react-colorful: ^5.5.1
   react-dom: 18.1.0
   react-final-form: ^6.5.9
+  react-hls-player: ^3.0.7
   react-qr-code: ^2.0.7
   rxjs: ^7.5.5
   sass: ^1.51.0
@@ -60,6 +61,7 @@ dependencies:
   react-colorful: 5.5.1_ef5jwxihqo6n7gxfmzogljlgcm
   react-dom: 18.1.0_react@18.1.0
   react-final-form: 6.5.9_bnxchjdfy45cdln7bu7hnhf37u
+  react-hls-player: 3.0.7_ef5jwxihqo6n7gxfmzogljlgcm
   react-qr-code: 2.0.7_react@18.1.0
   rxjs: 7.5.5
 
@@ -1463,6 +1465,10 @@ packages:
     engines: {node: '>= 0.6'}
     dev: false
 
+  /eventemitter3/4.0.7:
+    resolution: {integrity: sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==}
+    dev: false
+
   /express-jwt/7.6.2:
     resolution: {integrity: sha512-qvsvbr4oMhBAuSq/0I/CVzQWcXGuGZAxBGEI++kq4PaxEMgYCjYfHhUFtJQQlekiAL9CJtGgMFTEVIZegaKgEA==}
     engines: {node: '>= 8.0.0'}
@@ -1796,6 +1802,13 @@ packages:
 
   /hex-to-rgba/2.0.1:
     resolution: {integrity: sha512-5XqPJBpsEUMsseJUi2w2Hl7cHFFi3+OO10M2pzAvKB1zL6fc+koGMhmBqoDOCB4GemiRM/zvDMRIhVw6EkB8dQ==}
+    dev: false
+
+  /hls.js/0.14.17:
+    resolution: {integrity: sha512-25A7+m6qqp6UVkuzUQ//VVh2EEOPYlOBg32ypr34bcPO7liBMOkKFvbjbCBfiPAOTA/7BSx1Dujft3Th57WyFg==}
+    dependencies:
+      eventemitter3: 4.0.7
+      url-toolkit: 2.2.5
     dev: false
 
   /http-cache-semantics/4.1.0:
@@ -2932,6 +2945,17 @@ packages:
       react: 18.1.0
     dev: false
 
+  /react-hls-player/3.0.7_ef5jwxihqo6n7gxfmzogljlgcm:
+    resolution: {integrity: sha512-i5QWNyLmaUhV/mgnpljRJT0CBfJnylClV/bne8aiXO3ZqU0+D3U/jtTDwdXM4i5qHhyFy9lemyZ179IgadKd0Q==}
+    peerDependencies:
+      react: ^16.13.1
+      react-dom: ^16.13.1
+    dependencies:
+      hls.js: 0.14.17
+      react: 18.1.0
+      react-dom: 18.1.0_react@18.1.0
+    dev: false
+
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
@@ -3496,6 +3520,10 @@ packages:
     engines: {node: '>=4'}
     dependencies:
       prepend-http: 2.0.0
+    dev: false
+
+  /url-toolkit/2.2.5:
+    resolution: {integrity: sha512-mtN6xk+Nac+oyJ/PrI7tzfmomRVNFIWKUbG8jdYFt52hxbiReFAXIjYskvu64/dvuW71IcB7lV8l0HvZMac6Jg==}
     dev: false
 
   /util-deprecate/1.0.2:

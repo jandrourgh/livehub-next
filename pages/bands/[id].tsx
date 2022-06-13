@@ -1,12 +1,13 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { IBand } from "interfaces/Band";
 import type { NextPage } from "next";
 import Head from "next/head";
 import styles from "styles/Home.module.css";
 import PageLayout from "components/PageLayout";
-import React from "react";
 import hexToRgba from "hex-to-rgba";
+import ReactHlsPlayer from 'react-hls-player';
+
 
 interface ISingleBandProps {
 	band: IBand;
@@ -21,7 +22,7 @@ interface IBandId {
 const Band: NextPage<ISingleBandProps> = (props: ISingleBandProps) => {
 	const { band } = props;
 
-	console.log(band);
+    const playerRef = useRef(null);
 
 	return (
 		<div className={styles.container}>
@@ -59,6 +60,16 @@ const Band: NextPage<ISingleBandProps> = (props: ISingleBandProps) => {
    
                     {
                         band.songUrl?<audio controls><source src={band.songUrl}></source></audio>:""
+                    }
+                    {
+                        band.isLive?<ReactHlsPlayer
+                        src="http://www.livehub.daw:8088/hls/TEST.m3u8"
+                        playerRef={playerRef}
+                        autoPlay={true}
+                        controls={true}
+                        width="100%"
+                        height="auto"
+                  /> : ""
                     }
 					</div>
 				</div>

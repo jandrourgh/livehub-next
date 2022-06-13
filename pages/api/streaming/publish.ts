@@ -43,6 +43,7 @@ export default async function handler(
                 console.log(req.body)
                 console.log(req.body.name, "publish")
                 band.isLive = true
+                console.log(band)
             } else if (req.body.call == "publish_done"){
                 console.log(req.body.name, "publish done")
                 band.isLive = false
