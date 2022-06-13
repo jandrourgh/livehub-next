@@ -34,7 +34,7 @@ const PostsCMS = ({token, userData}: PostsCMSProps) => {
             if(isEditing){
                 const editedPost: IPostEdit = {id: id, body: body, title: title}
                 //console.log(editedPost)
-                const editPostResponse = await fetch(`http://localhost:3000/api/posts/${id}`, {
+                const editPostResponse = await fetch(`http://www.livehub.daw:3000/api/posts/${id}`, {
                     headers: {"Authorization": `Bearer ${token}`},
                     method: "PUT",
                     body: JSON.stringify(editedPost)
@@ -46,7 +46,7 @@ const PostsCMS = ({token, userData}: PostsCMSProps) => {
                 }
             } else {
                 const newPost: IPostUpload = {body: body, title: title, uid: userData.id}
-                const newPostResponse = await fetch('http://localhost:3000/api/posts', {
+                const newPostResponse = await fetch('http://www.livehub.daw:3000/api/posts', {
                     headers: {"Authorization": `Bearer ${token}`},
                     method: "POST",
                     body: JSON.stringify(newPost)
@@ -64,7 +64,7 @@ const PostsCMS = ({token, userData}: PostsCMSProps) => {
 
     const deletePost = async (id: number) => {
         console.log(id)
-        const deletePostResponse = await fetch(`http://localhost:3000/api/posts/${id}`, {
+        const deletePostResponse = await fetch(`http://www.livehub.daw:3000/api/posts/${id}`, {
             headers: {"Authorization": `Bearer ${token}`},
             method:"DELETE"
         })
@@ -76,7 +76,7 @@ const PostsCMS = ({token, userData}: PostsCMSProps) => {
 
     useEffect(()=>{
         const fetchData = async () => {
-            const getPostsResponse = await fetch('http://localhost:3000/api/posts', {method: "GET"})
+            const getPostsResponse = await fetch('http://www.livehub.daw:3000/api/posts', {method: "GET"})
             if(getPostsResponse.ok){
                 const allPosts = getPostsResponse.json()
                 return allPosts

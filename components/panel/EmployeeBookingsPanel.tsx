@@ -27,7 +27,7 @@ const EmployeeBookingsPanel = ({
 	useEffect(() => {
 		const fetchData = async () => {
 			const getBookingsResponse = await fetch(
-				"http://localhost:3000/api/bookings/getEmployeeBookings",
+				"http://www.livehub.daw:3000/api/bookings/getEmployeeBookings",
 				{
 					headers: { Authorization: `Bearer ${token}` },
 				}

@@ -25,7 +25,7 @@ const CustomerBookingsPanel = ({token, userData}: BookingsPanelProps) => {
         if(loading){
             const fetchBookings = async () => {
                 // console.log("refresh bookings")
-                const bookingsResponse = await fetch('http://localhost:3000/api/bookings/getUserBookings', {
+                const bookingsResponse = await fetch('http://www.livehub.daw:3000/api/bookings/getUserBookings', {
                     headers:{"Authorization": `Bearer ${token}`}
                 })
                 const data: IBooking[] = await bookingsResponse.json()

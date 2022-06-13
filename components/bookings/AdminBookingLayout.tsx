@@ -13,7 +13,7 @@ const AdminBookingLayout = ({booking, token}: AdminBookingLayoutProps) => {
 
     useEffect(()=>{
         const fetchData = async () =>{
-            const getBookingResponse = await fetch(`http://localhost:3000/api/bookings/${booking.id}`, {
+            const getBookingResponse = await fetch(`http://www.livehub.daw:3000/api/bookings/${booking.id}`, {
                 headers:{"Authorization": `Bearer ${token}`}
             })
             if(getBookingResponse.ok){

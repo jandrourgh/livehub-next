@@ -15,7 +15,7 @@ const BookingForm = ({token, bookingSuccessful, closeModal}: {token: string, boo
     const [showError, setShowError] = useState(false)
     useEffect(()=>{
         async function fetchRooms(){
-            const roomsResponse = await fetch('http://localhost:3000/api/rooms', {
+            const roomsResponse = await fetch('http://www.livehub.daw:3000/api/rooms', {
                 headers: {"Authorization": `Bearer ${token}`}
             })
             const data = await roomsResponse.json()
@@ -51,7 +51,7 @@ const BookingForm = ({token, bookingSuccessful, closeModal}: {token: string, boo
         evt.preventDefault()
         // console.log("SUBMIT", turnsRequested, date, room)
         // console.log()
-        const makeBookingRequest = await fetch('http://localhost:3000/api/bookings/makeBooking', {
+        const makeBookingRequest = await fetch('http://www.livehub.daw:3000/api/bookings/makeBooking', {
             headers: {"Authorization": `Bearer ${token}`},
             method: "POST",
             body: JSON.stringify({turnsRequested: turnsRequested, date: date, room:room})

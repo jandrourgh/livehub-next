@@ -12,7 +12,7 @@ const TicketWindow = ({booking, token}: TokenWindowProps) => {
 
     const fetchMessages = async (booking:IBooking, token: string) => {
         console.log(booking, token)
-        const getBookingResponse = await fetch(`http://localhost:3000/api/bookings/${booking.id}`, {
+        const getBookingResponse = await fetch(`http://www.livehub.daw:3000/api/bookings/${booking.id}`, {
             headers: {"Authorization": `Bearer ${token}`}
         })
         const response = await getBookingResponse.json()
@@ -31,7 +31,7 @@ const TicketWindow = ({booking, token}: TokenWindowProps) => {
     
     const sendMessage = async (evt: React.FormEvent<HTMLFormElement>) => {
         evt.preventDefault()
-        const sendMessageResponse = await fetch(`http://localhost:3000/api/tickets/${booking.id}`, {
+        const sendMessageResponse = await fetch(`http://www.livehub.daw:3000/api/tickets/${booking.id}`, {
             headers: {"Authorization": `Bearer ${token}`},
             method: "POST",
             body: message

@@ -27,7 +27,7 @@ const SelectTurn = ({ date, room, requestTurn, values, showError }: ISelectTurnP
         async function fetchBookings() {
             //console.log(date, room);
             const response = await fetch(
-                "http://localhost:3000/api/bookings/getByDayRoom",
+                "http://www.livehub.daw:3000/api/bookings/getByDayRoom",
                 {
                     method: "POST",
                     body: JSON.stringify({ date: date, room: room }),

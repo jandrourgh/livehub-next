@@ -17,7 +17,7 @@ const EditRoomInfoForm = ({ token, data, userData }: IEditRoomInfoFormProps) => 
 
     // useEffect(()=>{
     //     const fetchUserData = async()=>{
-    //         const userResponse = await fetch(`http://localhost:3000/api/users/{${data.id}}`, {
+    //         const userResponse = await fetch(`http://www.livehub.daw:3000/api/users/{${data.id}}`, {
     //             headers: {"Authorization": `Bearer ${token}`}
     //         })
     //         const user = await userResponse.json()
@@ -34,7 +34,7 @@ const EditRoomInfoForm = ({ token, data, userData }: IEditRoomInfoFormProps) => 
             address: values.address
         }
         // console.log(sendData)
-        const updateRoomResponse = fetch('http://localhost:3000/api/rooms/update', {
+        const updateRoomResponse = fetch('http://www.livehub.daw:3000/api/rooms/update', {
             headers: {"Authorization": `Bearer ${token}`},
             method: 'POST',
             body: JSON.stringify(sendData)

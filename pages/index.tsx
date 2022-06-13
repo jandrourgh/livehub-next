@@ -14,10 +14,10 @@ const Home: NextPage = () => {
 
   useEffect(()=>{
     const fetchData = async ( ) => {
-      const getRoomsResponse = await fetch('http://localhost:3000/api/rooms')
+      const getRoomsResponse = await fetch('http://www.livehub.daw:3000/api/rooms')
       const allRooms = await getRoomsResponse.json()
       console.log(allRooms.rooms)
-      const getPostsResponse = await fetch('http://localhost:3000/api/posts')
+      const getPostsResponse = await fetch('http://www.livehub.daw:3000/api/posts')
       const allPosts = await getPostsResponse.json()
       console.log(allPosts)
       return {rooms: allRooms.rooms, posts: allPosts}
