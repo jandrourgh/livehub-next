@@ -35,8 +35,11 @@ export default async function handler(
   ) {
         await cors(req, res)
         const query = req.query
-        console.log(query)
-        console.log(req,  "publish")
+        if(req.body.call == "publish"){
+            console.log(req.body.name, "publish")
+        } else if (req.body.call == "publish_done"){
+            console.log(req.body.name, "publish done")
+        }
         res.status(200).json({})
     } 
 
