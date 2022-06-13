@@ -35,7 +35,11 @@ export default async function handler(
   ) {
         await cors(req, res)
         const query = req.query
+        const bandResponse = await fetch(`http://localhost:3001/bands/${req.body.name}`)
+        const band = await bandResponse.json()
+        console.log(band)
         if(req.body.call == "publish"){
+            console.log(req.body)
             console.log(req.body.name, "publish")
         } else if (req.body.call == "publish_done"){
             console.log(req.body.name, "publish done")
