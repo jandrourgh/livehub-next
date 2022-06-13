@@ -6,7 +6,7 @@ import Head from "next/head";
 import styles from "styles/Home.module.css";
 import PageLayout from "components/PageLayout";
 import hexToRgba from "hex-to-rgba";
-//import ReactHlsPlayer from 'react-hls-player';
+import ReactHlsPlayer from 'react-hls-player';
 
 
 interface ISingleBandProps {
@@ -23,6 +23,7 @@ const Band: NextPage<ISingleBandProps> = (props: ISingleBandProps) => {
 	const { band } = props;
 
     const playerRef = useRef(null);
+    const src = `http://www.livehub.daw:8088/hls/${band.id}.m3u8`
 
 	return (
 		<div className={styles.container}>
@@ -62,9 +63,9 @@ const Band: NextPage<ISingleBandProps> = (props: ISingleBandProps) => {
                         band.songUrl?<audio controls><source src={band.songUrl}></source></audio>:""
                     }
                     {
-                        band.isLive?<video>
-                            <source src={`http://www.livehub.daw:8088/hls/${band.id}.m3u8`}></source>
-                        </video>: ""
+                        band.isLive?<ReactHlsPlayer src={src} playerRef={playerRef}>
+                            <source ></source>
+                        </ReactHlsPlayer>: ""
                     }
 					</div>
 				</div>
