@@ -38,7 +38,7 @@ export default async function handler(
         const bandResponse = await fetch(`http://localhost:3001/bands/${req.body.name}`)
         if(bandResponse.ok){
             const band: IBand = await bandResponse.json()
-            console.log(band.description, band.isLive)
+            console.log(band.description, band.isLive, " TENGO EL OBJETO")
             if(req.body.call == "publish"){
                 console.log(req.body)
                 console.log(req.body.name, "publish")
