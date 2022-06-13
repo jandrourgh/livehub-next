@@ -62,14 +62,7 @@ const Band: NextPage<ISingleBandProps> = (props: ISingleBandProps) => {
                         band.songUrl?<audio controls><source src={band.songUrl}></source></audio>:""
                     }
                     {
-                        band.isLive?<ReactHlsPlayer
-                        src="http://www.livehub.daw:8088/hls/TEST.m3u8"
-                        playerRef={playerRef}
-                        autoPlay={true}
-                        controls={true}
-                        width="100%"
-                        height="auto"
-                  /> : ""
+                        band.isLive?"http://www.livehub.daw:8088/hls/TEST.m3u8": ""
                     }
 					</div>
 				</div>
