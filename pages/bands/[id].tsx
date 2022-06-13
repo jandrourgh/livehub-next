@@ -6,7 +6,7 @@ import Head from "next/head";
 import styles from "styles/Home.module.css";
 import PageLayout from "components/PageLayout";
 import hexToRgba from "hex-to-rgba";
-import ReactHlsPlayer from 'react-hls-player';
+//import ReactHlsPlayer from 'react-hls-player';
 
 
 interface ISingleBandProps {
