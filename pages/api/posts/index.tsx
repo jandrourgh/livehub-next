@@ -4,6 +4,14 @@ import { IPost, IPostUpload } from "interfaces/Posts";
 import { IRoom } from "interfaces/Room";
 import { IEmployee } from "interfaces/User";
 import { NextApiRequest, NextApiResponse } from "next";
+import Cors from "cors"
+import initMiddleware from "helpers/api/initMiddleware"
+
+const cors = initMiddleware(
+    Cors({
+        methods:['GET, POST, OPTIONS']
+    })
+)
 
 interface IRoomsResponse {
     rooms: IRoom[]
@@ -13,6 +21,7 @@ export default async function handler(
     res: NextApiResponse
 ){
     if(req.method=="POST"){
+        await cors(req, res)
         const uid = getUidFromRequest(req)
         const userData = await getUserDataById(uid) as IEmployee
         if(userData.role=="employee"){
