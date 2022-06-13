@@ -6,7 +6,6 @@ import Head from "next/head";
 import styles from "styles/Home.module.css";
 import PageLayout from "components/PageLayout";
 import hexToRgba from "hex-to-rgba";
-import ReactHlsPlayer from 'react-hls-player';
 
 
 interface ISingleBandProps {
@@ -63,8 +62,17 @@ const Band: NextPage<ISingleBandProps> = (props: ISingleBandProps) => {
                         band.songUrl?<audio controls><source src={band.songUrl}></source></audio>:""
                     }
                     {
-                        band.isLive?<ReactHlsPlayer src={src} playerRef={playerRef}>
-                        </ReactHlsPlayer>: ""
+                        band.isLive?<div className="row">
+                            <p className="display-1">{band.name} is LIVE!</p>
+                            <p>
+                                To access its streaming, paste this URL on a valid HTTP player, such as VLC 
+                            </p>
+                            <p className="alert alert-dark">
+                                {
+                                    src
+                                }
+                            </p>
+                        </div>:""
                     }
 					</div>
 				</div>
